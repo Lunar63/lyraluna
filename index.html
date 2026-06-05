@@ -291,23 +291,23 @@
 
                     <!-- Layout Selector -->
                     <div>
-                        <label class="block text-xs font-semibold text-lyra-charcoal/80 mb-2">2. เลือกแบบลายศิลปะพู่กันสีน้ำจำลองจากดีไซเนอร์</label>
+                        <label class="block text-xs font-semibold text-lyra-charcoal/80 mb-2">2. เลือกแบบลายศิลปะพู่กันสีน้ำจากดีไซเนอร์</label>
                         <div class="grid grid-cols-2 gap-2" id="wallLayoutContainer">
                             <button onclick="setWallpaperLayout(0)" class="layout-select-btn border-2 border-lyra-purple p-3 rounded-xl text-left bg-lyra-cream/30 hover:bg-lyra-lightpurple/20 transition duration-300 w-full shadow-sm">
-                                <span class="block text-xs font-bold text-lyra-darkpurple">แบบที่ 1: Celestial Orbit</span>
-                                <span class="block text-[10px] text-lyra-charcoal/60 mt-0.5">วงแหวนดวงดาวพาสเทล</span>
+                                <span class="block text-xs font-bold text-lyra-darkpurple">แบบที่ 1: Sweet Love</span>
+                                <span class="block text-[10px] text-lyra-charcoal/60 mt-0.5">ความรัก / เสน่ห์เมตตา</span>
                             </button>
                             <button onclick="setWallpaperLayout(1)" class="layout-select-btn border border-lyra-purple/15 p-3 rounded-xl text-left bg-lyra-cream/30 hover:bg-lyra-lightpurple/20 transition duration-300 w-full">
-                                <span class="block text-xs font-bold text-lyra-darkpurple">แบบที่ 2: Sacred Portal</span>
-                                <span class="block text-[10px] text-lyra-charcoal/60 mt-0.5">ซุ้มประตูมิติแฝงเวทย์มนต์</span>
+                                <span class="block text-xs font-bold text-lyra-darkpurple">แบบที่ 2: Wealthy Dome</span>
+                                <span class="block text-[10px] text-lyra-charcoal/60 mt-0.5">การเงิน / เรียกโชคลาภ</span>
                             </button>
                             <button onclick="setWallpaperLayout(2)" class="layout-select-btn border border-lyra-purple/15 p-3 rounded-xl text-left bg-lyra-cream/30 hover:bg-lyra-lightpurple/20 transition duration-300 w-full">
-                                <span class="block text-xs font-bold text-lyra-darkpurple">แบบที่ 3: Aura Starburst</span>
-                                <span class="block text-[10px] text-lyra-charcoal/60 mt-0.5">ประกายดวงดาวเรืองรอง</span>
+                                <span class="block text-xs font-bold text-lyra-darkpurple">แบบที่ 3: Career River</span>
+                                <span class="block text-[10px] text-lyra-charcoal/60 mt-0.5">การงาน / การเรียนลื่นไหล</span>
                             </button>
                             <button onclick="setWallpaperLayout(3)" class="layout-select-btn border border-lyra-purple/15 p-3 rounded-xl text-left bg-lyra-cream/30 hover:bg-lyra-lightpurple/20 transition duration-300 w-full">
-                                <span class="block text-xs font-bold text-lyra-darkpurple">แบบที่ 4: Constellation</span>
-                                <span class="block text-[10px] text-lyra-charcoal/60 mt-0.5">กลุ่มแผนที่ดาวเสริมโชคชะตา</span>
+                                <span class="block text-xs font-bold text-lyra-darkpurple">แบบที่ 4: Serene Cypress</span>
+                                <span class="block text-[10px] text-lyra-charcoal/60 mt-0.5">สุขภาพดี / แคล้วคลาดอุปสรรค</span>
                             </button>
                         </div>
                     </div>
@@ -349,7 +349,7 @@
                             
                             <div class="text-[9px] text-white/75 mt-4 tracking-[0.2em] font-serif z-10 drop-shadow">LYRALUNA COSMOS</div>
                             
-                            <!-- Dynamic Content Area (NO gray box, pure aesthetic text overlays) -->
+                            <!-- Dynamic Content Area (Clean widget overlays hiding baked-in template markers) -->
                             <div id="dynamicLayoutContainer" class="absolute inset-0 z-10 pointer-events-none w-full h-full">
                                 <!-- Rendered dynamically by javascript -->
                             </div>
@@ -503,32 +503,9 @@
                                 <span>ONLINE • แม่หมอสแตนบายอยู่ค่ะ</span>
                             </div>
                             
-                            <!-- Clean scannable Vector QR Code with absolutely NO overlays in the center -->
-                            <div class="w-40 h-40 bg-white rounded-2xl border border-lyra-purple/10 flex flex-col items-center justify-center p-3.5 relative overflow-hidden">
-                                <div class="w-full h-full opacity-90">
-                                    <svg class="w-full h-full text-lyra-charcoal" viewBox="0 0 100 100" fill="currentColor">
-                                        <!-- Top-left Finder -->
-                                        <path d="M0 0 h25 v25 h-25 z M5 5 h15 v15 h-15 z M10 10 h5 v5 h-5 z" />
-                                        <!-- Top-right Finder -->
-                                        <path d="M75 0 h25 v25 h-25 z M80 5 h15 v15 h-15 z M85 10 h5 v5 h-5 z" />
-                                        <!-- Bottom-left Finder -->
-                                        <path d="M0 75 h25 v25 h-25 z M5 80 h15 v15 h-15 z M10 85 h5 v5 h-5 z" />
-                                        <!-- Bottom-right Alignment -->
-                                        <path d="M80 80 h10 v10 h-10 z" />
-                                        <!-- Clean Noise Pixels representing QR Code blocks with absolutely NO central blocking overlay -->
-                                        <rect x="35" y="3" width="8" height="8" />
-                                        <rect x="52" y="8" width="12" height="6" />
-                                        <rect x="30" y="24" width="6" height="12" />
-                                        <rect x="44" y="32" width="12" height="8" />
-                                        <rect x="62" y="42" width="8" height="16" />
-                                        <rect x="12" y="42" width="12" height="12" />
-                                        <rect x="34" y="62" width="18" height="6" />
-                                        <rect x="64" y="62" width="10" height="10" />
-                                        <rect x="54" y="74" width="16" height="8" />
-                                        <rect x="34" y="84" width="12" height="12" />
-                                        <rect x="74" y="34" width="10" height="22" />
-                                    </svg>
-                                </div>
+                            <!-- Actual Scannable LINE QR Code Image from Assets -->
+                            <div class="w-40 h-40 bg-white rounded-2xl border border-lyra-purple/10 flex flex-col items-center justify-center p-1 relative overflow-hidden shadow-sm">
+                                <img src="LINE_ALBUM_5669_260605.jpg" alt="Lyraluna LINE QR Code" class="w-full h-full object-contain rounded-xl" onerror="this.onerror=null; this.src='https://placehold.co/160x160/ffffff/06C755?text=LINE+QR';">
                             </div>
                         </div>
                         <p class="text-[11px] text-lyra-charcoal/50 mt-3.5 italic">สแกนคิวอาร์โค้ดผ่าน LINE หรือคลิกปุ่มแอดไลน์ได้ทันที</p>
@@ -1014,10 +991,10 @@
 
         // --- WALLPAPER LIVE CUSTOMIZER CONTROLLERS (WITH ADVANCED SVG GENERATION) ---
         const wallpaperThemes = {
-            wealth: { label: "Wealth & Rich Balance", icon: "💰", textTheme: "เงินทองสมดุล มั่งคั่ง ค้าขายปัง" },
+            wealth: { label: "Wealth Harmony", icon: "💰", textTheme: "เงินทองสมดุล มั่งคั่ง ค้าขายปัง" },
             love: { label: "Sweet Love Charm", icon: "💖", textTheme: "เสน่ห์เมตตา ความรักเบ่งบาน ดึงดูดดวงใจ" },
-            career: { label: "Career & Crown", icon: "🎓", textTheme: "การงานมั่นคง ปัญญาเฉียบคม เกียรติยศเด่น" },
-            protection: { label: "Safe & Blessed Energy", icon: "🍀", textTheme: "แคล้วคลาดปลอดภัย สุขภาพกายใจเบิกบาน" }
+            career: { label: "Career Crown", icon: "🎓", textTheme: "การงานมั่นคง ปัญญาเฉียบคม เกียรติยศเด่น" },
+            protection: { label: "Safe & Sound", icon: "🍀", textTheme: "แคล้วคลาดปลอดภัย สุขภาพกายใจเบิกบาน" }
         };
 
         const wallpaperColorStyles = {
@@ -1026,28 +1003,28 @@
                 primaryFill: "#372E6F", 
                 secondaryFill: "#E9E7FC",
                 accentFill: "#FAF6F0",
-                numberTextColor: "text-white",
-                nameTextColor: "text-white/90",
-                themeLabelColor: "text-lyra-pink",
-                subLabelColor: "text-white/70"
+                numberTextColor: "text-lyra-darkpurple",
+                nameTextColor: "text-lyra-darkpurple",
+                themeLabelColor: "text-lyra-purple",
+                subLabelColor: "text-lyra-darkpurple/70"
             },
             rose: { 
                 overlayClass: "bg-gradient-to-tr from-[#F6CBE3]/40 to-[#FCEAEB]/40", 
                 primaryFill: "#8C3A41", 
                 secondaryFill: "#FAF6F0",
                 accentFill: "#DDB65C",
-                numberTextColor: "text-white",
-                nameTextColor: "text-white/90",
-                themeLabelColor: "text-lyra-gold",
-                subLabelColor: "text-[#FAF6F0]/80"
+                numberTextColor: "text-[#8C3A41]",
+                nameTextColor: "text-[#8C3A41]",
+                themeLabelColor: "text-lyra-pink",
+                subLabelColor: "text-[#8C3A41]/80"
             },
             midnight: { 
                 overlayClass: "bg-gradient-to-tr from-[#1E1A3D]/50 to-[#372E6F]/50", 
                 primaryFill: "#DDB65C", 
                 secondaryFill: "#FAF6F0",
                 accentFill: "#F6CBE3",
-                numberTextColor: "text-[#FAF6F0]",
-                nameTextColor: "text-[#FAF6F0]",
+                numberTextColor: "text-white",
+                nameTextColor: "text-white",
                 themeLabelColor: "text-lyra-pink",
                 subLabelColor: "text-white/70"
             },
@@ -1056,10 +1033,10 @@
                 primaryFill: "#372E6F", 
                 secondaryFill: "#FAF5E6",
                 accentFill: "#8C3A41",
-                numberTextColor: "text-lyra-darkpurple",
-                nameTextColor: "text-lyra-darkpurple/90",
+                numberTextColor: "text-amber-900",
+                nameTextColor: "text-amber-900",
                 themeLabelColor: "text-amber-900",
-                subLabelColor: "text-lyra-darkpurple/70"
+                subLabelColor: "text-amber-900/70"
             }
         };
 
@@ -1067,10 +1044,10 @@
         const layoutStyles = [
             { 
                 id: 0, 
-                name: "แบบที่ 1: Celestial Orbit (วงแหวนดวงดาวพาสเทล)", 
-                desc: "วงโคจรดาวเคราะห์และสัญลักษณ์แห่งการเติบโต",
+                name: "แบบที่ 1: Sweet Love (ความรัก/เสน่ห์)", 
+                desc: "พุ่มดอกไม้สะพรั่งและนกยูงความรัก",
                 renderSvg: (colors) => `
-                    <svg viewBox="0 0 100 150" class="w-full h-full">
+                    <svg viewBox="0 0 100 150" class="w-full h-full opacity-35">
                         <ellipse cx="50" cy="75" rx="35" ry="12" fill="none" stroke="${colors.primaryFill}" stroke-width="0.5" stroke-dasharray="1 1" transform="rotate(-15 50 75)" />
                         <ellipse cx="50" cy="75" rx="28" ry="28" fill="none" stroke="${colors.secondaryFill}" stroke-width="0.3" />
                         <circle cx="50" cy="75" r="22" fill="none" stroke="${colors.accentFill}" stroke-width="0.6" stroke-dasharray="3 1" />
@@ -1079,10 +1056,10 @@
             },
             { 
                 id: 1, 
-                name: "แบบที่ 2: Sacred Portal (ประตูมิติแห่งดวงใจ)", 
-                desc: "ซุ้มวิหารจักรวาลและดวงตาปกป้องดวงชะตา",
+                name: "แบบที่ 2: Wealthy Dome (การเงิน/โชคลาภ)", 
+                desc: "เรือนวิหารซุ้มประตูมิติมงคลเรียกทรัพย์ดึงดูดโชคลาภ",
                 renderSvg: (colors) => `
-                    <svg viewBox="0 0 100 150" class="w-full h-full">
+                    <svg viewBox="0 0 100 150" class="w-full h-full opacity-35">
                         <path d="M25 110 L25 55 A 25 25 0 0 1 75 55 L75 110 Z" fill="none" stroke="${colors.primaryFill}" stroke-width="0.8" />
                         <path d="M20 115 L20 55 A 30 30 0 0 1 80 55 L80 115 Z" fill="none" stroke="${colors.secondaryFill}" stroke-width="0.4" stroke-dasharray="2 1" />
                         <circle cx="50" cy="65" r="12" fill="none" stroke="${colors.accentFill}" stroke-width="0.6" />
@@ -1091,10 +1068,10 @@
             },
             { 
                 id: 2, 
-                name: "แบบที่ 3: Aura Starburst (ประกายดาวนำทางชีวิต)", 
-                desc: "แสงเรืองประกายดาวมงคลคอยดึงดูดพลังความสำเร็จ",
+                name: "แบบที่ 3: Career River (การงาน/การเรียน)", 
+                desc: "สายธารน้ำไหลราบรื่นและนกฝูงรุ่งโรจน์โผบิน",
                 renderSvg: (colors) => `
-                    <svg viewBox="0 0 100 150" class="w-full h-full">
+                    <svg viewBox="0 0 100 150" class="w-full h-full opacity-35">
                         <g transform="translate(50, 75)">
                             <line x1="0" y1="-45" x2="0" y2="45" stroke="${colors.secondaryFill}" stroke-width="0.3" stroke-dasharray="2 2" />
                             <line x1="-45" y1="0" x2="45" y2="0" stroke="${colors.secondaryFill}" stroke-width="0.3" stroke-dasharray="2 2" />
@@ -1106,10 +1083,10 @@
             },
             { 
                 id: 3, 
-                name: "แบบที่ 4: Constellation (โครงข่ายเส้นทางชะตาฟ้า)", 
-                desc: "กลุ่มหมู่ดาวระยิบระยับชักนำโชคลาภวาสนาดี",
+                name: "แบบที่ 4: Serene Cypress (สุขภาพดี/แคล้วคลาด)", 
+                desc: "ทิวสนคุ้มภัยพายุปกป้องร่างกายจิตใจสมดุล",
                 renderSvg: (colors) => `
-                    <svg viewBox="0 0 100 150" class="w-full h-full">
+                    <svg viewBox="0 0 100 150" class="w-full h-full opacity-35">
                         <circle cx="50" cy="75" r="38" fill="none" stroke="${colors.primaryFill}" stroke-width="0.4" />
                         <circle cx="50" cy="75" r="35" fill="none" stroke="${colors.secondaryFill}" stroke-width="0.2" />
                     </svg>
@@ -1117,12 +1094,12 @@
             }
         ];
 
-        // Layout watercolor file links matching background images from user assets
+        // Layout watercolor file links matching background images from user assets (UPDATED TO THE PERFECT FIT _2 VERSIONS)
         const layoutImages = [
-            "LINE_ALBUM_5669_260605_4.jpg", // Sweet Love
-            "LINE_ALBUM_5669_260605_3.jpg", // Wealthy Dome
-            "LINE_ALBUM_5669_260605_2.jpg", // Career River
-            "LINE_ALBUM_5669_260605_1.jpg"  // Serene Cypress
+            "LINE_ALBUM_5669_260605_4_2.jpg", // แบบที่ 1 (ความรัก/เสน่ห์)
+            "LINE_ALBUM_5669_260605_3_2.jpg", // แบบที่ 2 (การเงิน/โชคลาภ)
+            "LINE_ALBUM_5669_260605_2_2.jpg", // แบบที่ 3 (การงาน/การเรียน)
+            "LINE_ALBUM_5669_260605_1_2.jpg"  // แบบที่ 4 (สุขภาพ/แคล้วคลาด)
         ];
 
         function setWallColor(colorKey) {
@@ -1133,7 +1110,7 @@
             const keys = ['lavender', 'rose', 'midnight', 'solar'];
             buttons.forEach((btn, idx) => {
                 if (keys[idx] === colorKey) {
-                    btn.className = "color-theme-btn border-2 border-lyra-purple p-2.5 rounded-xl text-center text-[11px] font-bold shadow-sm transition-all";
+                    btn.className = "color-theme-btn border-2 border-lyra-purple p-2.5 rounded-xl text-center text-[11px] font-bold bg-gradient-to-br from-[#E9E7FC] to-[#D5CFF7] text-lyra-darkpurple shadow-sm transition-all";
                 } else {
                     btn.className = "color-theme-btn border border-lyra-purple/10 p-2.5 rounded-xl text-center text-[11px] font-medium text-lyra-darkpurple hover:border-lyra-purple/30 transition-all";
                 }
@@ -1217,7 +1194,7 @@
             phoneScreen.style.backgroundImage = `url('${layoutImages[state.selectedLayoutIndex]}')`;
 
             const overlay = document.getElementById('phoneScreenColorOverlay');
-            overlay.className = `absolute inset-0 z-0 opacity-40 mix-blend-color transition-all duration-500 ${colorData.overlayClass}`;
+            overlay.className = `absolute inset-0 z-0 opacity-25 mix-blend-color transition-all duration-500 ${colorData.overlayClass}`;
 
             // Compute lucky numbers using name input hash code
             let hashVal = 0;
@@ -1229,25 +1206,21 @@
             let pair3 = (hashVal * 3) % 89 + 10;
             const finalNumbers = `${pair1} ${pair2} ${pair3}`;
 
-            // Overlying text layout directly into watercolor template coordinate placeholders beautifully without gray card box
+            // Overlying text layout directly into watercolor template coordinate placeholders beautifully without blocking
             const container = document.getElementById('dynamicLayoutContainer');
             container.innerHTML = `
-                <!-- Lucky Numbers Overlay replacing default '8 8 8 8' center text in raw templates -->
-                <div class="absolute top-[48%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full select-none pointer-events-none z-10">
-                    <div class="text-3xl md:text-4xl font-serif font-extrabold tracking-[0.2em] drop-shadow-[0_2px_4px_rgba(0,0,0,0.45)] ${colorData.numberTextColor}">
-                        ${finalNumbers}
-                    </div>
-                    <div class="text-[9px] uppercase tracking-[0.25em] font-bold opacity-90 mt-1.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)] ${colorData.themeLabelColor}">
-                        ${themeData.label}
-                    </div>
+                <!-- Glassmorphic capsule just wide enough to hide the "8 8 8 8" and display actual numbers -->
+                <div class="absolute top-[48%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[180px] bg-white/40 backdrop-blur-md border border-white/30 py-2 px-3 rounded-full shadow-lg flex flex-col items-center justify-center">
+                    <span class="text-[8px] uppercase tracking-[0.25em] font-bold text-lyra-darkpurple/80 mb-0.5">${themeData.label}</span>
+                    <span class="text-lg font-serif font-extrabold tracking-[0.15em] text-lyra-darkpurple">${finalNumbers}</span>
                 </div>
 
-                <!-- Customized Name Overlay replacing default 'LYRALUNA' bottom footer text in raw templates -->
-                <div class="absolute bottom-[8%] left-1/2 transform -translate-x-1/2 text-center w-full select-none pointer-events-none z-10">
-                    <div class="text-sm font-mono font-black tracking-[0.3em] uppercase drop-shadow-[0_2px_3px_rgba(0,0,0,0.45)] ${colorData.nameTextColor}">
+                <!-- Customized Name Overlay beautifully covering the default bottom text "LYRALUNA" in template -->
+                <div class="absolute bottom-[8%] left-1/2 transform -translate-x-1/2 w-[150px] bg-white/45 backdrop-blur-md border border-white/20 py-1.5 px-3 rounded-xl shadow-md text-center">
+                    <div class="text-xs font-mono font-black tracking-[0.25em] uppercase text-lyra-darkpurple truncate">
                         ${nameInput}
                     </div>
-                    <div class="text-[8px] uppercase tracking-[0.15em] opacity-80 mt-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)] ${colorData.subLabelColor}">
+                    <div class="text-[7px] uppercase tracking-[0.12em] opacity-80 mt-0.5 text-lyra-darkpurple/70">
                         Soul Companion
                     </div>
                 </div>
@@ -1299,7 +1272,7 @@
             const floatCart = document.getElementById('floatingCartBtn');
             const floatCartCount = document.getElementById('floatingCartCount');
 
-            // Bug fix: Cleanly rebuild empty state block using innerHTML to prevent type appendChild null errors
+            // Cleanly rebuild empty state block using innerHTML to prevent type appendChild null errors
             if (state.cart.length === 0) {
                 cartList.innerHTML = `
                     <div id="cartEmptyMessage" class="text-center py-6 text-xs text-lyra-charcoal/50">
@@ -1412,7 +1385,7 @@
             if (hasReadings) {
                 text += `👤 ข้อมูลผู้สั่ง / ลูกดวง:\n`;
                 text += `- ชื่อเล่น: ${customerName ? customerName : 'แจ้งทางแชท LINE'}\n`;
-                text += `- ช่องทางการติดต่อเพิ่มเติม (ไม่บังคับ): ${customerPhone ? customerPhone : 'ไม่ระบุ'}\n`;
+                text += `- ช่องทางการติดต่อเพิ่มเติม: ${customerPhone ? customerPhone : 'ไม่ระบุ'}\n`;
                 text += `===================================\n`;
             }
             
