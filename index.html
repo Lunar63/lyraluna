@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyraluna • บริการอ่านไพ่ทาโรต์ พยากรณ์ส่วนตัวและวอลเปเปอร์มงคล</title>
+    <!-- Google Fonts: Prompt and Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Prompt:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Prompt', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        lyra: {
+                            purple: '#9086E5',
+                            lightpurple: '#E9E7FC',
+                            darkpurple: '#372E6F',
+                            pink: '#F6CBE3',
+                            cream: '#FAF6F0',
+                            gold: '#DDB65C',
+                            charcoal: '#2D283E',
+                            line: '#06C755', // LINE Green Color
+                        }
+                    },
+                    animation: {
+                        'float': 'float 4s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spin-slow': 'spin 18s linear infinite',
+                        'shimmer': 'shimmer 2s linear infinite',
+                        'twinkle-star': 'twinkle 2.5s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0) scale(1)' },
+                            '50%': { transform: 'translateY(-8px) scale(1.02)' },
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' },
+                        },
+                        twinkle: {
+                            '0%, 100%': { opacity: '0.2', transform: 'scale(0.8)' },
+                            '50%': { opacity: '1', transform: 'scale(1.2)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Modern Scrollbar Customization */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF6F0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #9086E5;
+            border-radius: 999px;
+        }
+
+        .scrollbar-none::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-none {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Celestial Twinkle Background with pure CSS and gradients */
+        .stars-bg {
+            background-image: 
+                radial-gradient(1.5px 1.5px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 120px 80px, #DDB65C, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 200px 150px, #F6CBE3, rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 290px 40px, #ffffff, rgba(0,0,0,0));
+            background-size: 300px 300px;
+        }
+    </style>
+</head>
+<body class="bg-lyra-cream text-lyra-charcoal font-sans antialiased overflow-x-hidden selection:bg-lyra-pink selection:text-lyra-darkpurple">
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-40 bg-lyra-cream/90 backdrop-blur-md border-b border-lyra-purple/10 px-4 py-3 md:px-8">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="relative w-10 h-10 bg-lyra-purple rounded-full flex items-center justify-center text-white shadow-md shadow-lyra-purple/20">
+                    <span class="text-lg animate-pulse-slow">🔮🌙</span>
+                    <span class="absolute -top-1 -right-1 text-lyra-gold text-xs animate-float">✦</span>
+                </div>
+                <div>
+                    <span class="font-serif font-bold text-xl tracking-wider text-lyra-darkpurple block -mb-1">Lyraluna</span>
+                    <span class="text-[9px] tracking-[0.2em] text-lyra-purple uppercase font-semibold">Soul & Stars</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links for Desktop -->
+            <div class="hidden lg:flex items-center gap-6 text-xs font-semibold tracking-wide text-lyra-darkpurple/80">
+                <a href="#wallpaper-customizer" class="hover:text-lyra-purple transition-all">ออกแบบวอลเปเปอร์</a>
+                <a href="#services" class="hover:text-lyra-purple transition-all">แพ็คเกจไพ่ทาโรต์</a>
+                <a href="#contact-hub" class="hover:text-lyra-purple transition-all">ติดต่อด่วน</a>
+            </div>
+
+            <!-- Right Controls: Contact Badges & Burger Menu -->
+            <div class="flex items-center gap-2.5">
+                <!-- Line Official Badge Link (Nav) -->
+                <a href="https://lin.ee/VC0wAY8M" target="_blank" class="hidden md:flex items-center gap-1.5 bg-lyra-line/10 hover:bg-lyra-line/20 text-lyra-line border border-lyra-line/30 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all">
+                    <span class="w-2 h-2 rounded-full bg-lyra-line animate-ping"></span>
+                    <span>Line: @189gxlqd</span>
+                </a>
+                
+                <a href="#order" class="bg-lyra-darkpurple text-white text-xs md:text-sm px-4 py-2.5 rounded-full font-medium hover:bg-lyra-purple shadow-md shadow-lyra-darkpurple/10 transition-all duration-300 flex items-center gap-1.5">
+                    <span>🔮🌙</span> สั่งซื้อ/จัดจอง
+                </a>
+                
+                <!-- Hamburger Menu Toggle Button -->
+                <button onclick="toggleMenuDrawer(true)" class="p-2.5 text-lyra-darkpurple hover:bg-lyra-lightpurple/50 rounded-full transition-all flex items-center justify-center relative group" aria-label="เปิดเมนู">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                    <span class="absolute top-1 right-1 text-lyra-gold text-[8px] opacity-0 group-hover:opacity-100 transition-opacity">✦</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Slide-out Menu Drawer Overlay -->
+    <div id="menuDrawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300">
+        <!-- Backdrop Shadow -->
+        <div id="drawerBackdrop" onclick="toggleMenuDrawer(false)" class="absolute inset-0 bg-lyra-darkpurple/30 backdrop-blur-sm opacity-0 transition-opacity duration-300 ease-in-out"></div>
+        
+        <!-- Drawer Panel Container -->
+        <div id="drawerPanel" class="absolute right-0 top-0 bottom-0 w-80 max-w-[85vw] bg-lyra-cream border-l border-lyra-purple/15 shadow-2xl translate-x-full transition-transform duration-300 ease-in-out p-6 flex flex-col justify-between z-10">
+            <div>
+                <!-- Drawer Header -->
+                <div class="flex items-center justify-between border-b border-lyra-purple/10 pb-4 mb-6">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-lyra-purple rounded-full flex items-center justify-center text-white shadow-sm">
+                            <span class="text-sm">🔮🌙</span>
+                        </div>
+                        <div>
+                            <span class="font-serif font-bold text-base text-lyra-darkpurple block -mb-1">Lyraluna Menu</span>
+                            <span class="text-[8px] tracking-wider text-lyra-purple font-semibold uppercase">Celestial Space</span>
+                        </div>
+                    </div>
+                    <!-- Close Button -->
+                    <button onclick="toggleMenuDrawer(false)" class="p-2 text-lyra-darkpurple hover:bg-lyra-lightpurple/60 rounded-full transition-all" aria-label="ปิดเมนู">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+
+                <!-- Vertical Navigation Links -->
+                <nav class="flex flex-col gap-1 font-medium text-sm text-lyra-darkpurple">
+                    <a href="#wallpaper-customizer" onclick="toggleMenuDrawer(false)" class="flex items-center gap-3 py-3 px-4 hover:bg-lyra-lightpurple/40 rounded-2xl transition-all group">
+                        <span class="text-lyra-purple group-hover:scale-125 transition-transform">🎨</span> ออกแบบวอลเปเปอร์มงคล
+                    </a>
+                    <a href="#services" onclick="toggleMenuDrawer(false)" class="flex items-center gap-3 py-3 px-4 hover:bg-lyra-lightpurple/40 rounded-2xl transition-all group">
+                        <span class="text-lyra-purple group-hover:scale-125 transition-transform">✦</span> บริการอ่านไพ่ทาโรต์ พยากรณ์ส่วนตัว
+                    </a>
+                    <a href="#contact-hub" onclick="toggleMenuDrawer(false)" class="flex items-center gap-3 py-3 px-4 hover:bg-lyra-lightpurple/40 rounded-2xl text-lyra-line font-semibold transition-all group">
+                        <span class="text-lyra-line group-hover:scale-125 transition-transform">💬</span> ช่องทางติดต่อด่วน LINE
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Drawer Footer -->
+            <div class="border-t border-lyra-purple/10 pt-6 space-y-4">
+                <!-- Contact card inside menu -->
+                <div class="bg-gradient-to-br from-lyra-line/5 to-emerald-50 border border-lyra-line/25 p-4 rounded-2xl text-center shadow-inner">
+                    <p class="text-xs font-bold text-lyra-line flex items-center justify-center gap-1.5 mb-1.5">
+                        <span class="w-2 h-2 rounded-full bg-lyra-line animate-ping"></span> แชทสั่งซื้อด่วนที่นี่
+                    </p>
+                    <a href="https://lin.ee/VC0wAY8M" target="_blank" class="block w-full bg-lyra-line hover:bg-[#05b04b] text-white py-2 rounded-xl text-xs font-bold transition-all shadow-sm">
+                        Line ID: @189gxlqd
+                    </a>
+                </div>
+                <a href="#order" onclick="toggleMenuDrawer(false)" class="w-full bg-lyra-darkpurple hover:bg-lyra-purple text-white text-center py-3 rounded-2xl text-xs font-bold transition-all duration-300 block shadow-md shadow-lyra-darkpurple/10">
+                    จัดจองดวง / ไปที่ตะกร้า 🔮🌙
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="relative overflow-hidden pt-12 pb-20 px-4 md:px-8 bg-gradient-to-b from-lyra-lightpurple/50 via-lyra-cream to-lyra-cream">
+        <!-- Celestial elements -->
+        <div class="absolute top-10 left-[5%] text-lyra-purple/20 animate-float"><i data-lucide="sparkle" class="w-10 h-10"></i></div>
+        <div class="absolute top-20 right-[8%] text-lyra-gold/30 animate-spin-slow"><i data-lucide="star" class="w-14 h-14"></i></div>
+        <div class="absolute bottom-10 left-[12%] text-lyra-pink/40 animate-pulse-slow"><span class="text-xl">🔮🌙</span></div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <!-- Cute Badge -->
+            <div class="inline-flex items-center gap-2 bg-white/80 border border-lyra-purple/20 rounded-full px-5 py-2 mb-6 shadow-sm">
+                <span class="inline-block w-2.5 h-2.5 rounded-full bg-lyra-pink animate-ping"></span>
+                <span class="text-xs font-bold text-lyra-darkpurple tracking-wider">Lyraluna</span>
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-4xl md:text-6xl font-serif font-extrabold tracking-tight text-lyra-darkpurple mb-6 leading-tight">
+                ดวงดาวจะโอบกอดใจคุณ <br class="md:hidden">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-lyra-purple via-lyra-gold to-lyra-pink">
+                    คำทำนายและวอลเปเปอร์มงคล
+                </span> เพื่อคุณโดยเฉพาะ
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-sm md:text-lg text-lyra-charcoal/80 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                ยินดีต้อนรับสู่ Lyraluna พื้นที่ปลอดภัยแสนอบอุ่น ผสมผสานศิลปะลายน่ารักพาสเทลเข้ากับศาสตร์พยากรณ์ดวงดาวและรหัสตัวเลขมงคลเฉพาะบุคคล เพื่อดึงดูดสิ่งดีๆ และความแฮปปี้ในชีวิตทุกวัน 🔮🌙
+            </p>
+
+            <!-- Hero CTAs -->
+            <div class="flex flex-col sm:flex-row justify-center gap-4 max-w-lg mx-auto">
+                <a href="#services" class="bg-lyra-purple hover:bg-lyra-darkpurple text-white px-8 py-4 rounded-2xl font-semibold shadow-lg shadow-lyra-purple/25 transition-all duration-300 text-center flex items-center justify-center gap-2">
+                    <i data-lucide="message-square-heart" class="w-5 h-5 text-lyra-pink"></i> ดูแพ็คเกจทำนายดวง
+                </a>
+                <a href="#wallpaper-customizer" class="bg-white hover:bg-lyra-lightpurple/30 text-lyra-darkpurple border border-lyra-purple/25 px-8 py-4 rounded-2xl font-semibold shadow-sm transition-all duration-300 text-center flex items-center justify-center gap-2">
+                    <i data-lucide="palette" class="w-5 h-5 text-lyra-purple"></i> ลองออกแบบวอลเปเปอร์
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dynamic Live Wallpaper Customizer Section -->
+    <section id="wallpaper-customizer" class="py-16 px-4 md:px-8 bg-gradient-to-b from-lyra-cream to-lyra-lightpurple/20 scroll-mt-24">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-10">
+                <span class="text-xs font-bold tracking-widest text-lyra-purple uppercase block mb-1">Auspicious Wallpaper Live Customizer</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-lyra-darkpurple">ออกแบบวอลเปเปอร์เฉพาะตน 📱✨</h2>
+                <p class="text-xs md:text-sm text-lyra-charcoal/70 max-w-xl mx-auto mt-2">
+                    พิมพ์ชื่อชะตาของคุณ เลือกเรื่องเสริมดวง โทนสี และลายภาพจำลองพู่กันสีน้ำจากทางดีไซเนอร์ เพื่อดูพรีวิวบนภาพวอลเปเปอร์ลิขสิทธิ์แท้แบบเรียลไทม์!
+                </p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-stretch justify-center gap-12">
+                <!-- Customizer Form Panel (Left) -->
+                <div class="flex-1 bg-white p-6 md:p-8 rounded-3xl border border-lyra-purple/15 shadow-sm space-y-5">
+                    <h3 class="font-bold text-sm text-lyra-darkpurple border-b border-lyra-purple/10 pb-3 flex items-center gap-2">
+                        <i data-lucide="sliders" class="w-4 h-4 text-lyra-purple"></i> 1. ตั้งค่าข้อมูลดวงชะตาและสไตล์ของคุณ
+                    </h3>
+
+                    <!-- Input Name -->
+                    <div>
+                        <label class="block text-xs font-semibold text-lyra-charcoal/80 mb-1.5">ชื่ออังกฤษที่ต้องการให้ใส่บนภาพ *</label>
+                        <input id="inputWallName" type="text" value="LYRALUNA" oninput="updateWallpaperPreview()" placeholder="พิมพ์ชื่อภาษาอังกฤษ เช่น AMP, PATTY" class="w-full px-4 py-3 text-xs rounded-xl border border-lyra-purple/20 focus:outline-none focus:ring-2 focus:ring-lyra-purple bg-lyra-cream/20 font-mono text-center tracking-widest uppercase text-lyra-darkpurple font-bold">
+                    </div>
+
+                    <!-- Auspicious Topic Focus -->
+                    <div>
+                        <label class="block text-xs font-semibold text-lyra-charcoal/80 mb-1.5">เรื่องที่ต้องการเสริมความสิริมงคลดวงชะตา</label>
+                        <select id="selectWallTheme" onchange="updateWallpaperPreview()" class="w-full px-3 py-2.5 text-xs rounded-xl border border-lyra-purple/20 focus:outline-none focus:ring-2 focus:ring-lyra-purple bg-white text-lyra-darkpurple font-medium">
+                            <option value="wealth">💰 เสริมทรัพย์ การเงิน ค้าขายมั่นคง (Wealth Harmony)</option>
+                            <option value="love">💖 เสน่ห์เมตตามหานิยม ความรักสุขสมบูรณ์ (Sweet Love Charm)</option>
+                            <option value="career">🎓 สติปัญญา การงานสำเร็จ ผู้ใหญ่เอ็นดูเกื้อหนุน (Career Crown)</option>
+                            <option value="protection">🍀 สุขภาพกายใจ ปลอดภัยแคล้วคลาดอุปสรรค (Safe & Sound)</option>
+                        </select>
+                    </div>
+
+                    <!-- Custom Wallpaper Color Theme -->
+                    <div>
+                        <label class="block text-xs font-semibold text-lyra-charcoal/80 mb-2">เลือกโทนสีพื้นหลังภาพวอลเปเปอร์</label>
+                        <div class="grid grid-cols-4 gap-2" id="wallColorContainer">
+                            <button onclick="setWallColor('lavender')" class="color-theme-btn border-2 border-lyra-purple p-2.5 rounded-xl text-center text-[11px] font-bold bg-gradient-to-br from-[#E9E7FC] to-[#D5CFF7] text-lyra-darkpurple shadow-sm">
+                                Lavender
+                            </button>
+                            <button onclick="setWallColor('rose')" class="color-theme-btn border border-lyra-purple/10 p-2.5 rounded-xl text-center text-[11px] font-medium bg-gradient-to-br from-[#F6CBE3] to-[#FCEAEB] text-[#8C3A41] hover:border-lyra-purple/30">
+                                Rose Quartz
+                            </button>
+                            <button onclick="setWallColor('midnight')" class="color-theme-btn border border-lyra-purple/10 p-2.5 rounded-xl text-center text-[11px] font-medium bg-gradient-to-br from-[#1E1A3D] to-[#392E5B] text-lyra-pink hover:border-lyra-purple/30">
+                                Midnight
+                            </button>
+                            <button onclick="setWallColor('solar')" class="color-theme-btn border border-lyra-purple/10 p-2.5 rounded-xl text-center text-[11px] font-medium bg-gradient-to-br from-[#FAF5E6] to-[#EDDFB8] text-amber-800 hover:border-lyra-purple/30">
+                                Gold Solar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Layout Selector -->
+                    <div>
+                        <label class="block text-xs font-semibold text-lyra-charcoal/80 mb-2">2. เลือกแบบลายศิลปะพู่กันสีน้ำจำลองจากดีไซเนอร์</label>
+                        <div class="grid grid-cols-2 gap-2" id="wallLayoutContainer">
+                            <button onclick="setWallpaperLayout(0)" class="layout-select-btn border-2 border-lyra-purple p-3 rounded-xl text-left bg-lyra-cream/30 hover:bg-lyra-lightpurple/20 transition duration-300 w-full shadow-sm">
+                                <span class="block text-xs font-bold text-lyra-darkpurple">แบบที่ 1: Celestial Orbit</span>
+                                <span class="block text-[10px] text-lyra-charcoal/60 mt-0.5">วงแหวนดวงดาวพาสเทล</span>
+                            </button>
+                            <button onclick="setWallpaperLayout(1)" class="layout-select-btn border border-lyra-purple/15 p-3 rounded-xl text-left bg-lyra-cream/30 hover:bg-lyra-lightpurple/20 transition duration-300 w-full">
+                                <span class="block text-xs font-bold text-lyra-darkpurple">แบบที่ 2: Sacred Portal</span>
+                                <span class="block text-[10px] text-lyra-charcoal/60 mt-0.5">ซุ้มประตูมิติแฝงเวทย์มนต์</span>
+                            </button>
+                            <button onclick="setWallpaperLayout(2)" class="layout-select-btn border border-lyra-purple/15 p-3 rounded-xl text-left bg-lyra-cream/30 hover:bg-lyra-lightpurple/20 transition duration-300 w-full">
+                                <span class="block text-xs font-bold text-lyra-darkpurple">แบบที่ 3: Aura Starburst</span>
+                                <span class="block text-[10px] text-lyra-charcoal/60 mt-0.5">ประกายดวงดาวเรืองรอง</span>
+                            </button>
+                            <button onclick="setWallpaperLayout(3)" class="layout-select-btn border border-lyra-purple/15 p-3 rounded-xl text-left bg-lyra-cream/30 hover:bg-lyra-lightpurple/20 transition duration-300 w-full">
+                                <span class="block text-xs font-bold text-lyra-darkpurple">แบบที่ 4: Constellation</span>
+                                <span class="block text-[10px] text-lyra-charcoal/60 mt-0.5">กลุ่มแผนที่ดาวเสริมโชคชะตา</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Add custom wallpaper to cart -->
+                    <button onclick="addCustomWallpaperToCart()" class="w-full bg-lyra-darkpurple hover:bg-lyra-purple text-white py-4 rounded-2xl text-xs font-bold transition-all duration-300 shadow-md shadow-lyra-darkpurple/20 flex items-center justify-center gap-2">
+                        <i data-lucide="palette" class="w-4 h-4 text-lyra-pink"></i> สั่งผลิตลายวอลเปเปอร์ที่ออกแบบนี้จริง (ราคาพิเศษ 89.- จากปกติ 199.-)
+                    </button>
+                </div>
+
+                <!-- Live Phone Mockup Preview (With Swipe & Procedural Graphics Engine) -->
+                <div class="flex-1 flex flex-col justify-center items-center relative">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-lyra-purple/20 to-lyra-pink/20 rounded-full blur-3xl w-72 h-72 mx-auto self-center"></div>
+
+                    <!-- Interactive Phone Frame container with Touch Swipe Support -->
+                    <div id="phoneMockupFrame" class="relative w-64 h-[480px] bg-lyra-charcoal rounded-[40px] p-3 border-4 border-lyra-charcoal shadow-2xl z-10 overflow-hidden select-none cursor-grab active:cursor-grabbing">
+                        <div class="absolute top-4 left-1/2 transform -translate-x-1/2 w-20 h-4 bg-lyra-charcoal rounded-full z-20"></div>
+                        
+                        <!-- LEFT & RIGHT Slideway Buttons -->
+                        <button onclick="prevWallpaperLayout()" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-white/80 hover:bg-white text-lyra-darkpurple rounded-full flex items-center justify-center shadow-md z-30 transition-all active:scale-95" aria-label="ดีไซน์ก่อนหน้า">
+                            <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                        </button>
+                        <button onclick="nextWallpaperLayout()" class="absolute right-3 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-white/80 hover:bg-white text-lyra-darkpurple rounded-full flex items-center justify-center shadow-md z-30 transition-all active:scale-95" aria-label="ดีไซน์ถัดไป">
+                            <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                        </button>
+
+                        <!-- Live Screen Design with Beautiful Dynamic SVG Fallbacks -->
+                        <div id="phoneScreen" class="w-full h-full rounded-[32px] overflow-hidden p-4 flex flex-col justify-between text-center relative text-white transition-all duration-500 bg-cover bg-center bg-no-repeat bg-lyra-darkpurple">
+                            <!-- Background Image Filter Overlay (Blend selected colors seamlessly) -->
+                            <div id="phoneScreenColorOverlay" class="absolute inset-0 z-0 opacity-40 mix-blend-color transition-all duration-500"></div>
+                            
+                            <!-- Custom Live Vector Pattern SVG Background -->
+                            <div id="phoneScreenSvgBg" class="absolute inset-0 z-0 flex items-center justify-center">
+                                <!-- SVGs injected dynamically by script -->
+                            </div>
+                            
+                            <!-- Starry background pattern overlay on top -->
+                            <div class="stars-bg absolute inset-0 opacity-40 z-0"></div>
+                            
+                            <div class="text-[9px] text-white/75 mt-4 tracking-[0.2em] font-serif z-10 drop-shadow">LYRALUNA COSMOS</div>
+                            
+                            <!-- Dynamic Content Area (NO gray box, pure aesthetic text overlays) -->
+                            <div id="dynamicLayoutContainer" class="absolute inset-0 z-10 pointer-events-none w-full h-full">
+                                <!-- Rendered dynamically by javascript -->
+                            </div>
+
+                            <div class="text-[7px] text-white/60 mb-2 z-10 drop-shadow-sm absolute bottom-2 left-1/2 transform -translate-x-1/2 w-full">Protected by Lyraluna Celestial Magic</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Control buttons under preview -->
+                    <div class="flex gap-2.5 mt-4 z-10">
+                        <button onclick="openFullscreenPreview()" class="bg-white hover:bg-lyra-lightpurple text-lyra-darkpurple border border-lyra-purple/20 text-[10px] px-3.5 py-2 rounded-full font-bold shadow-sm transition-all flex items-center gap-1.5">
+                            <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> ดูตัวอย่างเต็มจอ ✧
+                        </button>
+                        <span id="layoutBadgeIndicator" class="bg-lyra-darkpurple text-white text-[10px] px-3.5 py-2 rounded-full font-bold tracking-wider shadow-sm border border-lyra-pink/30 flex items-center">
+                            แบบที่ 1 ✦
+                        </span>
+                    </div>
+                    <span class="text-[9px] text-lyra-charcoal/50 mt-2">💡 เคล็ดลับ: คุณสามารถปัดหน้าจอโทรศัพท์จำลองซ้าย-ขวาเพื่อเปลี่ยนแบบลายได้นะคะ!</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services & Pricing Section -->
+    <section id="services" class="py-16 px-4 md:px-8 max-w-6xl mx-auto scroll-mt-24">
+        <div class="text-center mb-12">
+            <span class="text-xs font-bold tracking-widest text-lyra-purple uppercase block mb-1">Our Premium Tarot Packages</span>
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-lyra-darkpurple">บริการอ่านไพ่ทาโรต์ พยากรณ์ส่วนตัว ✨</h2>
+            <p class="text-xs md:text-sm text-lyra-charcoal/70 max-w-xl mx-auto mt-2">
+                เจาะลึกประเด็นเรื่องราวชีวิต วิเคราะห์ดวงดาราร่วมกับไพ่ทาโรต์ด้วยความใส่ใจ อบอุ่นเป็นกันเองเหมือนเพื่อนคู่คิด รับปรึกษาดวงชะตาผ่านแชท LINE อย่างเป็นความลับสูงสุด
+            </p>
+        </div>
+
+        <!-- Question Packages Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            
+            <!-- Yes or No Card Package -->
+            <div class="bg-white rounded-3xl border border-lyra-purple/15 p-6 hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-16 h-16 bg-lyra-lightpurple rounded-bl-full flex items-start justify-end p-2.5 text-lyra-purple">
+                    <i data-lucide="check-circle-2" class="w-5 h-5 text-lyra-purple"></i>
+                </div>
+                <div>
+                    <span class="text-[10px] font-bold tracking-widest text-lyra-purple uppercase block mb-1">Quick Guide</span>
+                    <h3 class="text-base font-bold text-lyra-darkpurple">Yes or No (1 คำถาม)</h3>
+                    <p class="text-xs text-lyra-charcoal/60 mt-2 mb-6">เหมาะสำหรับถามตัดสินใจเรื่องเดียวเร่งด่วน ชี้ชัดทิศทาง ได้รับคำตอบว่าใช่หรือไม่ใช่ พร้อมสรุปเหตุผลแนะแนวสั้นกระชับเข้าใจง่าย</p>
+                </div>
+                <div>
+                    <div class="flex items-baseline gap-1 mb-4">
+                        <span class="text-xs text-lyra-charcoal/50">เพียง</span>
+                        <span class="text-3xl font-extrabold text-lyra-darkpurple">9.-</span>
+                        <span class="text-xs text-lyra-charcoal/50">/ คำถาม</span>
+                    </div>
+                    <button onclick="addToCart('Yes or No (1 คำถาม)', 9)" class="w-full py-3 rounded-xl text-xs bg-lyra-lightpurple hover:bg-lyra-purple text-lyra-darkpurple hover:text-white font-bold transition-all duration-300">
+                        เลือกแพ็คเกจนี้ ✦
+                    </button>
+                </div>
+            </div>
+
+            <!-- 1 Question Package -->
+            <div class="bg-white rounded-3xl border border-lyra-purple/15 p-6 hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-16 h-16 bg-lyra-lightpurple rounded-bl-full flex items-start justify-end p-2.5 text-lyra-purple">
+                    <span class="font-serif font-extrabold text-sm text-lyra-purple">1Q</span>
+                </div>
+                <div>
+                    <span class="text-[10px] font-bold tracking-widest text-lyra-purple uppercase block mb-1">Deep Dive</span>
+                    <h3 class="text-base font-bold text-lyra-darkpurple">หนึ่งคำถามเชิงลึก</h3>
+                    <p class="text-xs text-lyra-charcoal/60 mt-2 mb-6">เจาะรายละเอียดเรื่องการงาน ความรัก การศึกษา หรือการตัดสินใจสำคัญ วิเคราะห์ภาพรวม แนะนำวิธีแก้ไขและพลิกวิกฤตเป็นโอกาส</p>
+                </div>
+                <div>
+                    <div class="flex items-baseline gap-1 mb-4">
+                        <span class="text-xs text-lyra-charcoal/50">เพียง</span>
+                        <span class="text-3xl font-extrabold text-lyra-darkpurple">19.-</span>
+                        <span class="text-xs text-lyra-charcoal/50">/ แพ็คเกจ</span>
+                    </div>
+                    <button onclick="addToCart('หนึ่งคำถามเชิงลึก', 19)" class="w-full py-3 rounded-xl text-xs bg-lyra-lightpurple hover:bg-lyra-purple text-lyra-darkpurple hover:text-white font-bold transition-all duration-300">
+                        เลือกแพ็คเกจนี้ ✦
+                    </button>
+                </div>
+            </div>
+
+            <!-- 3 Questions Package -->
+            <div class="bg-white rounded-3xl border-2 border-lyra-purple p-6 shadow-md shadow-lyra-purple/10 hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
+                <div class="absolute -top-1 -right-1 bg-lyra-purple text-white text-[9px] font-bold px-3.5 py-1.5 rounded-bl-2xl tracking-wider uppercase">
+                    Best Seller ⭐
+                </div>
+                <div>
+                    <span class="text-[10px] font-bold tracking-widest text-lyra-purple uppercase block mb-1">Most Popular</span>
+                    <h3 class="text-base font-bold text-lyra-darkpurple">สามคำถามจุใจ</h3>
+                    <p class="text-xs text-lyra-charcoal/60 mt-2 mb-6">แพ็คเกจยอดฮิตที่สุด! เชื่อมโยงเรื่องราวเกี่ยวพันกันได้ถึง 3 คำถาม ช่วยให้คลายข้อกังวล มองเห็นปัญหาและทางสว่างได้อย่างครอบคลุม</p>
+                </div>
+                <div>
+                    <div class="flex items-baseline gap-1 mb-4">
+                        <span class="text-xs text-lyra-charcoal/50">เพียง</span>
+                        <span class="text-3xl font-extrabold text-lyra-purple">55.-</span>
+                        <span class="text-xs text-lyra-charcoal/50">/ แพ็คเกจ</span>
+                    </div>
+                    <button onclick="addToCart('สามคำถามจุใจ', 55)" class="w-full py-3 rounded-xl text-xs bg-lyra-purple hover:bg-lyra-darkpurple text-white font-bold transition-all duration-300 shadow-md shadow-lyra-purple/20">
+                        เลือกแพ็คเกจนี้ ✦
+                    </button>
+                </div>
+            </div>
+
+            <!-- 5 Questions Package -->
+            <div class="bg-white rounded-3xl border border-lyra-purple/15 p-6 hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-16 h-16 bg-lyra-lightpurple rounded-bl-full flex items-start justify-end p-2.5 text-lyra-purple">
+                    <span class="font-serif font-extrabold text-sm text-lyra-purple">5Q</span>
+                </div>
+                <div>
+                    <span class="text-[10px] font-bold tracking-widest text-lyra-purple uppercase block mb-1">Full Layout</span>
+                    <h3 class="text-base font-bold text-lyra-darkpurple">ห้าคำถามไขชีวิต</h3>
+                    <p class="text-xs text-lyra-charcoal/60 mt-2 mb-6">วิเคราะห์ดวงชะตารอบด้านแบบจุใจ ปลดล็อกทุกคำถามทั้งการเงิน ความรัก สุขภาพ การเรียน และเรื่องครอบครัวอย่างตรงไปตรงมา</p>
+                </div>
+                <div>
+                    <div class="flex items-baseline gap-1 mb-4">
+                        <span class="text-xs text-lyra-charcoal/50">เพียง</span>
+                        <span class="text-3xl font-extrabold text-lyra-darkpurple">89.-</span>
+                        <span class="text-xs text-lyra-charcoal/50">/ แพ็คเกจ</span>
+                    </div>
+                    <button onclick="addToCart('ห้าคำถามไขชีวิต', 89)" class="w-full py-3 rounded-xl text-xs bg-lyra-lightpurple hover:bg-lyra-purple text-lyra-darkpurple hover:text-white font-bold transition-all duration-300">
+                        เลือกแพ็คเกจนี้ ✦
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- NEW SECTION: High Prominence Dedicated Contact Channels Hub -->
+    <section id="contact-hub" class="py-16 px-4 md:px-8 bg-gradient-to-b from-white to-lyra-cream border-t border-lyra-purple/10 scroll-mt-24">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-10">
+                <span class="text-xs font-bold tracking-widest text-lyra-line uppercase block mb-1">Fast & Easy Connection</span>
+                <h2 class="text-3xl font-serif font-bold text-lyra-darkpurple">ติดต่อสั่งซื้อและแชทกับแม่หมอด่วน 🔮🌙</h2>
+                <p class="text-xs md:text-sm text-lyra-charcoal/70 max-w-xl mx-auto mt-2">
+                    มีข้อสงสัยเกี่ยวกับแพ็คเกจดูดวง หรือต้องการสั่งซื้อไฟล์วอลเปเปอร์มงคลลิขสิทธิ์แท้? แอดไลน์เพื่อเข้าคิวและรับคำทำนายที่รวดเร็วได้เลยค่ะ
+                </p>
+            </div>
+
+            <div class="bg-white rounded-3xl border-4 border-lyra-purple/25 p-6 md:p-10 shadow-xl shadow-lyra-purple/10 relative overflow-hidden">
+                <!-- Glowing Aura particles -->
+                <div class="absolute -top-10 -left-10 w-40 h-40 bg-lyra-line/10 rounded-full blur-2xl"></div>
+                <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-lyra-pink/30 rounded-full blur-2xl"></div>
+
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10">
+                    <!-- Column 1: QR Code & Status Mockup -->
+                    <div class="flex-1 flex flex-col items-center text-center">
+                        <div class="relative bg-gradient-to-tr from-lyra-lightpurple to-white p-4 rounded-3xl border-2 border-dashed border-lyra-purple/30 shadow-inner group">
+                            <!-- Flashing Active Status badge -->
+                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-white px-3 py-1 rounded-full text-[10px] font-bold text-emerald-600 border border-emerald-100 flex items-center gap-1.5 shadow-sm">
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                                <span>ONLINE • แม่หมอสแตนบายอยู่ค่ะ</span>
+                            </div>
+                            
+                            <!-- Clean scannable Vector QR Code with absolutely NO overlays in the center -->
+                            <div class="w-40 h-40 bg-white rounded-2xl border border-lyra-purple/10 flex flex-col items-center justify-center p-3.5 relative overflow-hidden">
+                                <div class="w-full h-full opacity-90">
+                                    <svg class="w-full h-full text-lyra-charcoal" viewBox="0 0 100 100" fill="currentColor">
+                                        <!-- Top-left Finder -->
+                                        <path d="M0 0 h25 v25 h-25 z M5 5 h15 v15 h-15 z M10 10 h5 v5 h-5 z" />
+                                        <!-- Top-right Finder -->
+                                        <path d="M75 0 h25 v25 h-25 z M80 5 h15 v15 h-15 z M85 10 h5 v5 h-5 z" />
+                                        <!-- Bottom-left Finder -->
+                                        <path d="M0 75 h25 v25 h-25 z M5 80 h15 v15 h-15 z M10 85 h5 v5 h-5 z" />
+                                        <!-- Bottom-right Alignment -->
+                                        <path d="M80 80 h10 v10 h-10 z" />
+                                        <!-- Clean Noise Pixels representing QR Code blocks with absolutely NO central blocking overlay -->
+                                        <rect x="35" y="3" width="8" height="8" />
+                                        <rect x="52" y="8" width="12" height="6" />
+                                        <rect x="30" y="24" width="6" height="12" />
+                                        <rect x="44" y="32" width="12" height="8" />
+                                        <rect x="62" y="42" width="8" height="16" />
+                                        <rect x="12" y="42" width="12" height="12" />
+                                        <rect x="34" y="62" width="18" height="6" />
+                                        <rect x="64" y="62" width="10" height="10" />
+                                        <rect x="54" y="74" width="16" height="8" />
+                                        <rect x="34" y="84" width="12" height="12" />
+                                        <rect x="74" y="34" width="10" height="22" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-lyra-charcoal/50 mt-3.5 italic">สแกนคิวอาร์โค้ดผ่าน LINE หรือคลิกปุ่มแอดไลน์ได้ทันที</p>
+                    </div>
+
+                    <!-- Column 2: Clickable Quick Action details -->
+                    <div class="flex-1 flex flex-col justify-center text-center md:text-left space-y-4">
+                        <div class="space-y-1.5">
+                            <span class="text-[10px] bg-lyra-line/10 text-lyra-line px-3 py-1 rounded-full font-bold uppercase tracking-wider inline-block">LINE Official Account</span>
+                            <h3 class="text-2xl font-bold text-lyra-darkpurple">Line ID: <span class="text-lyra-line underline">@189gxlqd</span></h3>
+                            <p class="text-xs text-lyra-charcoal/80 leading-relaxed">
+                                เปิดตอบรับสิทธิ์ 10:00 น. - 23:00 น. ของทุกวัน จัดทำวอลเปเปอร์มงคลเฉพาะบุคคล และคำทำนายความรัก/การงาน ภายในคิว 24-48 ชั่วโมง
+                            </p>
+                        </div>
+
+                        <!-- Main Click to add Line CTA -->
+                        <div class="flex flex-col gap-2 pt-2">
+                            <a href="https://lin.ee/VC0wAY8M" target="_blank" class="w-full bg-lyra-line hover:bg-[#05b04b] text-white py-3.5 px-6 rounded-2xl font-bold text-xs shadow-lg shadow-lyra-line/30 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                                <span class="text-sm">💬</span>
+                                <span>คลิกเพื่อแอดไลน์สั่งจองคิวทันที</span>
+                            </a>
+                            <div class="flex items-center justify-center md:justify-start gap-4 text-[11px] text-lyra-charcoal/60 px-1">
+                                <span class="flex items-center gap-1"><i data-lucide="check" class="w-3.5 h-3.5 text-lyra-line"></i> ตอบกลับเร็วทันใจ</span>
+                                <span class="flex items-center gap-1"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-lyra-line"></i> ข้อมูลลูกดวงเป็นความลับ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Order Builder Section -->
+    <section id="order" class="py-16 px-4 md:px-8 max-w-4xl mx-auto scroll-mt-24">
+        <div class="bg-white rounded-3xl border-2 border-lyra-purple/20 shadow-xl overflow-hidden">
+            <div class="bg-gradient-to-r from-lyra-darkpurple to-lyra-purple text-white p-6 md:p-8 text-center">
+                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="shopping-cart" class="w-6 h-6 text-lyra-pink"></i>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-serif font-bold">สรุปรายการคำสั่งจอง & ข้อมูลลูกดวง 🔮🌙</h2>
+                <p class="text-xs text-white/80 mt-1.5">กรอกข้อมูลเพิ่มเติมเพื่อคำนวณราคา ก่อนคัดลอกรายละเอียดสั่งซื้อส่งแอดมินในแชท LINE</p>
+            </div>
+
+            <!-- Form Body -->
+            <div class="p-6 md:p-8 space-y-6">
+                
+                <!-- Step 1: Services Cart Check -->
+                <div>
+                    <h3 class="font-bold text-lyra-darkpurple text-sm mb-3 flex items-center gap-2">
+                        <span class="w-5 h-5 bg-lyra-lightpurple text-lyra-purple rounded-full flex items-center justify-center text-xs font-bold">1</span>
+                        รายการบริการทำนายดวงและวอลเปเปอร์ที่เลือกไว้
+                    </h3>
+                    
+                    <!-- Selected Items list inside Cart -->
+                    <div id="cartList" class="space-y-3 bg-lyra-cream/40 p-4 rounded-2xl border border-lyra-purple/10">
+                        <div id="cartEmptyMessage" class="text-center py-6 text-xs text-lyra-charcoal/50">
+                            ยังไม่มีการเลือกบริการพยากรณ์ใดๆ กรุณาคลิก "เลือกแพ็คเกจ" หรือกดปุ่ม "สั่งผลิตลายวอลเปเปอร์" ด้านบนเพื่อจัดทำออเดอร์
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Wallpaper details (Visible ONLY if wallpaper in cart) -->
+                <div id="wallpaperDetailsContainer" class="hidden bg-gradient-to-r from-lyra-pink/10 to-lyra-purple/10 p-5 rounded-2xl border border-lyra-purple/20 space-y-4">
+                    <h4 class="font-bold text-lyra-darkpurple text-xs flex items-center gap-1">
+                        <i data-lucide="palette" class="w-4 h-4 text-lyra-purple"></i> รายละเอียดเพื่อการคำนวณรหัสตัวเลขวอลเปเปอร์เฉพาะตน
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[11px] font-semibold text-lyra-charcoal/70 mb-1">ชื่อ-สกุลจริง (หรือชื่อที่ให้ปรากฎบนภาพ)</label>
+                            <input id="wallName" type="text" placeholder="ตัวอย่าง: กนกวรรณ จันทร์ส่องแสง" class="w-full px-3 py-2.5 text-xs rounded-xl border border-lyra-purple/15 bg-white text-lyra-darkpurple">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-semibold text-lyra-charcoal/70 mb-1">วัน/เดือน/ปีเกิด และเวลาเกิด (ถ้ามี)</label>
+                            <input id="wallBirthdate" type="text" placeholder="ตัวอย่าง: อังคาร 12 มิถุนายน 2544 เวลา 08:32 น." class="w-full px-3 py-2.5 text-xs rounded-xl border border-lyra-purple/15 bg-white text-lyra-darkpurple">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-semibold text-lyra-charcoal/70 mb-1">เรื่องต้องการเน้นเป็นพิเศษ</label>
+                            <select id="wallFocus" class="w-full px-3 py-2.5 text-xs rounded-xl border border-lyra-purple/15 bg-white text-lyra-darkpurple">
+                                <option value="การเงิน มั่งคั่ง ค้าขายดีไหลมาเทมา">การเงิน มั่งคั่ง ค้าขายดีไหลมาเทมา 💰</option>
+                                <option value="ความรัก เสน่ห์ดึงดูด เมตตารักใคร่">ความรัก เสน่ห์ดึงดูด เมตตารักใคร่ 💖</option>
+                                <option value="ความสำเร็จ การงาน การศึกษา การเลื่อนขั้น">ความสำเร็จ การงาน การศึกษา การเลื่อนขั้น 🎓</option>
+                                <option value="สุขภาพ ร่างกายสมดุล ปลอดภัย มีสุขสงบ">สุขภาพ ร่างกายสมดุล ปลอดภัย มีสุขสงบ 🍀</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-semibold text-lyra-charcoal/70 mb-1">โทนสีและดีไซน์ที่ต้องการเป็นพิเศษ</label>
+                            <input id="wallStyle" type="text" placeholder="เช่น สีม่วงลาเวนเดอร์, แบบที่ 1 Celestial Orbit" class="w-full px-3 py-2.5 text-xs rounded-xl border border-lyra-purple/15 bg-white text-lyra-darkpurple">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Customer basic info -->
+                <div id="customerInfoContainer">
+                    <h3 class="font-bold text-lyra-darkpurple text-sm mb-3 flex items-center gap-2">
+                        <span class="w-5 h-5 bg-lyra-lightpurple text-lyra-purple rounded-full flex items-center justify-center text-xs font-bold">2</span>
+                        ข้อมูลผู้สั่งอ่านไพ่ทาโรต์ / ลูกดวง
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[11px] font-semibold text-lyra-charcoal/70 mb-1">ชื่อเล่นของคุณ</label>
+                            <input id="customerName" type="text" placeholder="ระบุชื่อเล่นของคุณ" class="w-full px-3 py-2.5 text-xs rounded-xl border border-lyra-purple/15 bg-white focus:outline-none focus:ring-1 focus:ring-lyra-purple text-lyra-darkpurple">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-semibold text-lyra-charcoal/70 mb-1">ช่องทางการติดต่อเพิ่มเติม (ไม่บังคับ)</label>
+                            <input id="customerPhone" type="text" placeholder="เช่น LINE ID, Facebook, เบอร์โทรศัพท์" class="w-full px-3 py-2.5 text-xs rounded-xl border border-lyra-purple/15 bg-white focus:outline-none focus:ring-1 focus:ring-lyra-purple text-lyra-darkpurple">
+                        </div>
+                    </div>
+                    
+                    <!-- Text area for remarks/notes -->
+                    <div class="mt-4">
+                        <label class="block text-[11px] font-semibold text-lyra-charcoal/70 mb-1">หมายเหตุ (ไม่บังคับ)</label>
+                        <textarea id="customerQuestions" rows="3" placeholder="ระบุข้อความเพิ่มเติมหรือรายละเอียดอื่นๆ ที่ต้องการแจ้งแอดมินหรือแม่หมอได้เลยค่ะ (เช่น คำถามสำหรับการตรวจดวงชะตา พยากรณ์ส่วนตัว)" class="w-full px-3 py-2.5 text-xs rounded-xl border border-lyra-purple/15 bg-white focus:outline-none focus:ring-1 focus:ring-lyra-purple text-lyra-darkpurple"></textarea>
+                    </div>
+                </div>
+
+                <!-- Price summary Box -->
+                <div class="bg-lyra-lightpurple/30 p-5 rounded-2xl border border-lyra-purple/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div>
+                        <span class="text-xs text-lyra-charcoal/50 block">ยอดชำระเงินรวมทั้งหมด</span>
+                        <div class="flex items-baseline gap-1.5">
+                            <span id="totalPriceDisplay" class="text-3xl font-extrabold text-lyra-darkpurple">0</span>
+                            <span class="text-sm font-semibold text-lyra-darkpurple">บาท</span>
+                        </div>
+                        <span class="text-[10px] text-lyra-purple block mt-0.5">*ไม่มีค่าบริการบวกเพิ่ม สามารถชำระเงินผ่านการสแกน QR Code ทางช่องแชทไลน์ได้เลยค่ะ</span>
+                    </div>
+
+                    <div class="flex flex-col gap-2 w-full sm:w-auto">
+                        <button onclick="generateOrderText()" class="bg-lyra-purple hover:bg-lyra-darkpurple text-white px-6 py-3.5 rounded-xl text-xs font-bold transition-all duration-300 shadow-md shadow-lyra-purple/20 flex items-center justify-center gap-2">
+                            <i data-lucide="copy" class="w-4 h-4"></i> สรุปข้อมูลดวงและคัดลอกส่ง LINE ✦
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Copy Alert Status Display -->
+                <div id="copyAlert" class="hidden bg-emerald-50 border border-emerald-200 text-emerald-800 p-4 rounded-xl text-xs flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
+                    <div>
+                        <strong>คัดลอกรายละเอียดเรียบร้อยแล้วค่ะ!</strong> แอดไลน์ร้าน Lyraluna (ID: @189gxlqd) หรือสแกนโค้ดด้านบน แล้วส่งข้อความที่คัดลอกมานี้ทางแชทเพื่อยืนยันคิวสั่งจองนะคะ ✨
+                    </div>
+                </div>
+
+                <!-- Formatted Text Box -->
+                <div id="outputContainer" class="hidden">
+                    <label class="block text-[10px] font-semibold text-lyra-charcoal/50 mb-1 uppercase tracking-wider">ข้อความใบสั่งจองดวง (คัดลอกเรียบร้อยแล้ว):</label>
+                    <textarea id="outputOrderText" readonly rows="8" class="w-full p-3 text-xs bg-lyra-cream/80 border border-lyra-purple/20 rounded-xl font-mono text-lyra-darkpurple focus:outline-none"></textarea>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="max-w-4xl mx-auto px-4 py-8">
+        <h3 class="text-center font-serif font-bold text-xl text-lyra-darkpurple mb-8">คำถามที่พบบ่อย (FAQ) 🔮🌙</h3>
+        <div class="space-y-4">
+            <!-- Q1 -->
+            <div class="bg-white p-5 rounded-2xl border border-lyra-purple/10 shadow-sm transition hover:shadow-md">
+                <h4 class="font-bold text-xs md:text-sm text-lyra-darkpurple flex items-start gap-2">
+                    <span class="text-lyra-purple font-serif font-extrabold text-sm md:text-base shrink-0">Q:</span>
+                    <span>คำทำนายจากแม่หมอ Lyraluna จะได้รับในลักษณะใด และรอนานแค่ไหน?</span>
+                </h4>
+                <div class="text-xs text-lyra-charcoal/80 mt-2 pl-5 leading-relaxed border-l-2 border-lyra-purple/20">
+                    <span class="font-bold text-lyra-purple">A:</span> คำทำนายเป็นการวิเคราะห์แบบละเอียดเชิงลึกเฉพาะบุคคลผ่านไพ่ทาโรต์และพลังดวงดาว แม่หมอจะส่งมอบไฟล์สรุปคำพยากรณ์ผ่านทางแชท LINE ภายในเวลา 24-48 ชั่วโมง ตามลำดับคิวการชำระเงินค่ะ
+                </div>
+            </div>
+            
+            <!-- Q2 -->
+            <div class="bg-white p-5 rounded-2xl border border-lyra-purple/10 shadow-sm transition hover:shadow-md">
+                <h4 class="font-bold text-xs md:text-sm text-lyra-darkpurple flex items-start gap-2">
+                    <span class="text-lyra-purple font-serif font-extrabold text-sm md:text-base shrink-0">Q:</span>
+                    <span>วอลเปเปอร์ดวงชะตานำมาจัดทำอย่างไร และปลอดภัยจากตัวเลขเสียหรือไม่?</span>
+                </h4>
+                <div class="text-xs text-lyra-charcoal/80 mt-2 pl-5 leading-relaxed border-l-2 border-lyra-purple/20">
+                    <span class="font-bold text-lyra-purple">A:</span> ดีไซเนอร์และนักพยากรณ์ตัวเลขร่วมกันวางสมการดวงดาวโดยอิงจากวันเดือนปีเกิดและเวลาเกิดของคุณโดยเฉพาะ เพื่อวางรหัสตัวเลขมงคลที่ดีที่สุด หลีกเลี่ยงตัวเลขเสีย คู่ชง หรือตัวเลขที่ไม่สอดคล้องกับดวงชะตา เพื่อช่วยให้เกิดพลังใจและแรงดึงดูดเชิงบวกค่ะ
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: เงื่อนไขการใช้บริการ (Terms & Conditions) -->
+    <section class="max-w-4xl mx-auto px-4 pb-16 scroll-mt-24">
+        <div class="bg-gradient-to-br from-lyra-cream to-lyra-lightpurple/30 rounded-3xl border-2 border-dashed border-lyra-purple/25 p-6 md:p-8 shadow-sm">
+            <div class="flex items-center gap-2.5 mb-6">
+                <div class="w-9 h-9 bg-lyra-purple text-white rounded-full flex items-center justify-center">
+                    <i data-lucide="shield-alert" class="w-5 h-5 text-lyra-pink"></i>
+                </div>
+                <div>
+                    <h3 class="font-serif font-bold text-lg md:text-xl text-lyra-darkpurple">เงื่อนไขต่างๆ ที่ควรรู้ก่อนการสั่งซื้อ ✦</h3>
+                    <p class="text-[10px] md:text-xs text-lyra-charcoal/60">โปรดอ่านรายละเอียดเงื่อนไขการใช้บริการของทางร้าน Lyraluna เพื่อประโยชน์สูงสุดของลูกดวงทุกท่านค่ะ</p>
+                </div>
+            </div>
+
+            <!-- Conditions Grid Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-lyra-charcoal/80 leading-relaxed">
+                <!-- Condition Column 1: Reading Policy -->
+                <div class="bg-white p-5 rounded-2xl border border-lyra-purple/5 shadow-inner space-y-2.5">
+                    <h4 class="font-bold text-lyra-darkpurple flex items-center gap-1.5 text-xs md:text-sm border-b border-lyra-purple/10 pb-2">
+                        <span>🔮</span> บริการอ่านไพ่ทาโรต์ พยากรณ์ส่วนตัว
+                    </h4>
+                    <ul class="space-y-2 list-none text-[11px] font-light">
+                        <li class="flex items-start gap-1">
+                            <span class="text-lyra-purple shrink-0">•</span>
+                            <span>การดูดวงเป็นแนวทางการชี้นำเพื่อสร้างกำลังใจและสติในการดำเนินชีวิต การตัดสินใจทุกอย่างในชีวิตขึ้นอยู่กับการปฏิบัติของคุณเอง</span>
+                        </li>
+                        <li class="flex items-start gap-1">
+                            <span class="text-lyra-purple shrink-0">•</span>
+                            <span>ข้อมูลวัน เดือน ปี เวลาเกิด รวมถึงบทสนทนาทั้งหมดจะถูกเก็บรักษาไว้เป็นความลับขั้นสูงสุด</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Condition Column 2: Wallpaper Policy -->
+                <div class="bg-white p-5 rounded-2xl border border-lyra-purple/5 shadow-inner space-y-2.5">
+                    <h4 class="font-bold text-lyra-darkpurple flex items-center gap-1.5 text-xs md:text-sm border-b border-lyra-purple/10 pb-2">
+                        <span>🎨</span> สินค้าวอลเปเปอร์มงคลเฉพาะดวง
+                    </h4>
+                    <ul class="space-y-2 list-none text-[11px] font-light">
+                        <li class="flex items-start gap-1">
+                            <span class="text-lyra-purple shrink-0">•</span>
+                            <span>เนื่องจากเป็นงานประดิษฐ์ขึ้นตามข้อมูลดวงชะตาส่วนบุคคล หากจัดสร้างตัวเลขเสร็จสิ้นแล้ว จะไม่สามารถขอเปลี่ยนชื่อหรือข้อมูลวันเกิดย้อนหลังได้ค่ะ</span>
+                        </li>
+                        <li class="flex items-start gap-1">
+                            <span class="text-lyra-purple shrink-0">•</span>
+                            <span>ไฟล์ภาพวอลเปเปอร์เป็นลิขสิทธิ์ของแบรนด์ สำหรับใช้ส่วนบุคคลเท่านั้น ไม่อนุญาตให้นำไปเผยแพร่เชิงพาณิชย์ทุกกรณี</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: ช่องทางการติดต่ออื่นๆ เพิ่มเติม (Other Contact Channels) -->
+    <section id="other-contacts" class="max-w-4xl mx-auto px-4 pb-16 -mt-8 scroll-mt-24">
+        <div class="bg-white rounded-3xl border border-lyra-purple/15 p-6 md:p-8 shadow-sm text-center">
+            <h3 class="font-serif font-bold text-lg text-lyra-darkpurple mb-6 flex items-center justify-center gap-2">
+                <span class="text-lyra-purple">✦</span> ช่องทางการติดตามสังคมออนไลน์ Lyraluna <span class="text-lyra-purple">✦</span>
+            </h3>
+            <!-- Contact Grid Info -->
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <!-- LINE (Official Link) -->
+                <a href="https://lin.ee/VC0wAY8M" target="_blank" class="flex flex-col items-center p-4 bg-emerald-50/40 hover:bg-emerald-50 rounded-2xl border border-emerald-500/10 transition group">
+                    <div class="w-10 h-10 bg-gradient-to-tr from-emerald-500 to-green-400 text-white rounded-full flex items-center justify-center mb-3 shadow-md shadow-emerald-500/10 group-hover:scale-110 transition-transform">
+                        <!-- Custom inline LINE SVG to prevent missing lucide icon issues -->
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.843 10.048 9.58.391.084.924.258 1.058.592.121.303.079.778.038 1.084l-.162 1.027c-.05.296-.218 1.158 1.03 1.158 1.153 0 6.223-3.663 8.491-6.273 2.05-2.281 3.513-4.908 3.513-7.164zm-14.777 3.329H7.781c-.22 0-.4-.18-.4-.4v-4.053c0-.22.18-.4.4-.4h1.442c.22 0 .4.18.4.4v3.653c0 .22-.18.4-.4.4zm3.176-.4c0 .22-.18.4-.4.4h-1.442c-.22 0-.4-.18-.4-.4v-4.053c0-.22.18-.4.4-.4s.4.18.4.4v3.253h1.042c.22 0 .4.18.4.4zm2.144.4h-.801c-.22 0-.4-.18-.4-.4v-4.053c0-.22.18-.4.4-.4s.4.18.4.4v4.053zm3.197-.801c0 .442-.358.801-.801.801h-1.34c-.22 0-.4-.18-.4-.4v-4.053c0-.22.18-.4.4-.4h1.34c.442 0 .801.358.801.801v.463c0 .193-.111.368-.283.447l-.988.455.988.455c.172.079.283.254.283.447v.482z"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-bold text-lyra-darkpurple">LINE Official</span>
+                    <span class="text-[10px] text-lyra-charcoal/60 mt-1">@189gxlqd</span>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/lyraluna639?igsh=MWZtZnl3endxdWhocg==" target="_blank" class="flex flex-col items-center p-4 bg-pink-50/40 hover:bg-pink-50 rounded-2xl border border-pink-500/10 transition group">
+                    <div class="w-10 h-10 bg-gradient-to-tr from-pink-500 via-red-500 to-yellow-500 text-white rounded-full flex items-center justify-center mb-3 shadow-md shadow-pink-500/10 group-hover:scale-110 transition-transform">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </div>
+                    <span class="text-xs font-bold text-lyra-darkpurple">Instagram</span>
+                    <span class="text-[10px] text-lyra-charcoal/60 mt-1">@lyraluna639</span>
+                </a>
+
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@lyrluna639?_r=1&_t=ZS-96u4472nceK" target="_blank" class="flex flex-col items-center p-4 bg-slate-50/40 hover:bg-slate-100 rounded-2xl border border-slate-500/10 transition group">
+                    <div class="w-10 h-10 bg-[#010101] text-white rounded-full flex items-center justify-center mb-3 shadow-md shadow-black/10 group-hover:scale-110 transition-transform">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.81-.74-3.94-1.69-.64-.54-1.16-1.18-1.53-1.92-.02 2.64 0 5.28-.01 7.92-.01 1.76-.46 3.58-1.52 5-.94 1.34-2.44 2.31-4.04 2.62-1.95.42-4.1.13-5.83-.92-1.66-1-2.82-2.77-3.09-4.71-.38-2.44.53-5.02 2.45-6.61 1.42-1.22 3.32-1.85 5.17-1.74.01 1.35 0 2.69.01 4.04-1.01-.08-2.09.18-2.92.79-.81.59-1.28 1.61-1.21 2.62.06 1.15.77 2.19 1.8 2.58.94.39 2.08.26 2.9-.32.65-.46.99-1.24 1.02-2.01.03-3.66.02-7.3.02-10.95z"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-bold text-lyra-darkpurple">TikTok</span>
+                    <span class="text-[10px] text-lyra-charcoal/60 mt-1">@lyrluna639</span>
+                </a>
+
+                <!-- X / Twitter -->
+                <a href="https://x.com/lyraluna639?s=21" target="_blank" class="flex flex-col items-center p-4 bg-neutral-50/40 hover:bg-neutral-100 rounded-2xl border border-neutral-500/10 transition group">
+                    <div class="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center mb-3 shadow-md shadow-black/10 group-hover:scale-110 transition-transform">
+                        <svg class="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-bold text-lyra-darkpurple">X / Twitter</span>
+                    <span class="text-[10px] text-lyra-charcoal/60 mt-1">@lyraluna639</span>
+                </a>
+
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/share/1CoMbNChzh/" target="_blank" class="flex flex-col items-center p-4 bg-blue-50/40 hover:bg-blue-50 rounded-2xl border border-blue-500/10 transition group">
+                    <div class="w-10 h-10 bg-gradient-to-tr from-blue-600 to-blue-500 text-white rounded-full flex items-center justify-center mb-3 shadow-md shadow-blue-600/10 group-hover:scale-110 transition-transform">
+                        <i data-lucide="facebook" class="w-5 h-5"></i>
+                    </div>
+                    <span class="text-xs font-bold text-lyra-darkpurple">Facebook</span>
+                    <span class="text-[10px] text-lyra-charcoal/60 mt-1">Lyraluna Page</span>
+                </a>
+            </div>
+            <div class="mt-6 pt-4 border-t border-lyra-purple/10 text-[11px] text-lyra-charcoal/50 flex items-center justify-center gap-1.5">
+                <i data-lucide="clock" class="w-3.5 h-3.5 text-lyra-purple"></i>
+                <span>เวลาทำการแอดมิน: ทุกวัน 10:00 น. - 23:00 น. (ข้อความนอกเวลาทำการจะได้รับการตอบกลับในเช้าวันถัดไปนะคะ)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-lyra-darkpurple text-white pt-12 pb-8 px-4 md:px-8">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 pb-8 border-b border-white/10">
+            <!-- Brand Info -->
+            <div class="text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start gap-2 mb-2">
+                    <span class="text-lg">🔮🌙</span>
+                    <span class="font-serif font-bold text-lg tracking-wider text-lyra-pink">Lyraluna</span>
+                </div>
+                <p class="text-[11px] text-white/60 max-w-xs leading-relaxed">
+                    ศาสตร์ความเชื่อเรื่องดวงดาว ผสมผสานดีไซน์ศิลปะพู่กันพาสเทลมินิมอล ส่งต่อพลังบวกอันอบอุ่นและเสริมความโชคดีในทุกแง่มุมของชีวิตคุณ
+                </p>
+            </div>
+
+            <!-- Social Links / Contact info -->
+            <div class="flex flex-col items-center md:items-end gap-3">
+                <span class="text-[10px] text-white/40 tracking-wider font-semibold uppercase">Connect with Lyraluna</span>
+                <div class="flex gap-4">
+                    <a href="https://www.instagram.com/lyraluna639?igsh=MWZtZnl3endxdWhocg==" target="_blank" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-lyra-purple transition" aria-label="Instagram">
+                        <i data-lucide="instagram" class="w-4 h-4"></i>
+                    </a>
+                    <a href="https://lin.ee/VC0wAY8M" target="_blank" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-lyra-purple transition" aria-label="LINE Official">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                    </a>
+                </div>
+                <span class="text-[10px] text-white/60">Line ID: @189gxlqd (มี @ นำหน้า)</span>
+            </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] text-white/40">
+            <span>&copy; 2026 Lyraluna Soul & Stars. All rights reserved.</span>
+            <div class="flex gap-4">
+                <a href="#" class="hover:underline">นโยบายความเป็นส่วนตัว</a>
+                <a href="#" class="hover:underline">ข้อตกลงการใช้บริการ</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Immersive Fullscreen Preview Modal -->
+    <div id="fullscreenPreviewModal" class="fixed inset-0 z-50 bg-lyra-darkpurple/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="relative w-full max-w-xs bg-lyra-charcoal rounded-[40px] p-4 shadow-2xl border border-white/10 overflow-hidden flex flex-col items-center">
+            <!-- Close Modal Trigger -->
+            <button onclick="closeFullscreenPreview()" class="absolute top-4 right-4 z-50 bg-white/20 hover:bg-white/40 text-white rounded-full p-2 transition" aria-label="ปิดพรีวิว">
+                <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+            <div id="modalScreenContainer" class="w-full h-[520px] rounded-[30px] overflow-hidden relative shadow-inner">
+                <!-- Injected Screen Copy inside JS -->
+            </div>
+            <p class="text-[10px] text-white/70 mt-3 text-center">📱 สามารถบันทึกรูปภาพหน้าจอนี้เพื่อนำไปทดลองตั้งเป็นภาพพื้นหลังได้เลยค่ะ!</p>
+        </div>
+    </div>
+
+    <!-- Floating Cart Button (Right Side) -->
+    <div id="floatingCartBtn" class="fixed bottom-6 right-6 z-30 hidden transition-all duration-300 transform translate-y-10 opacity-0">
+        <a href="#order" class="bg-lyra-darkpurple hover:bg-lyra-purple text-white px-5 py-3.5 rounded-full shadow-2xl flex items-center gap-2 border-2 border-lyra-pink font-semibold text-xs transition-all animate-bounce">
+            <span class="relative flex h-3 w-3">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-lyra-pink opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-lyra-pink"></span>
+            </span>
+            <i data-lucide="shopping-cart" class="w-4 h-4 text-lyra-pink"></i>
+            <span>สรุปคำสั่งจอง (<span id="floatingCartCount">0</span>) ✦</span>
+        </a>
+    </div>
+
+    <!-- Floating LINE button (Bottom Left) -->
+    <div class="fixed bottom-6 left-6 z-30 transition-all duration-300 transform hover:scale-105 active:scale-95">
+        <a href="https://lin.ee/VC0wAY8M" target="_blank" class="bg-gradient-to-r from-lyra-line to-emerald-500 text-white px-4 py-3 rounded-full shadow-2xl flex items-center gap-2 border-2 border-white font-bold text-xs shadow-lyra-line/30">
+            <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+            </span>
+            <span class="text-sm">💬</span>
+            <span>คุยกับแม่หมอ LINE ✦</span>
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Safe Web Audio API Synthesizer (Pure synthesizer code for magical sound effects)
+        let audioCtx = null;
+        function playMysticSound(type) {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                if (type === 'click') {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(783.99, audioCtx.currentTime);
+                    gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.15);
+                }
+            } catch (e) {
+                console.log("Audio safeguard activation.");
+            }
+        }
+
+        // --- GLOBAL STATE OBJECT ---
+        const state = {
+            currentWallColorTheme: "lavender",
+            selectedLayoutIndex: 0,
+            cart: []
+        };
+
+        // --- GLOBAL SMOOTH SCROLL OVERRIDE ---
+        document.body.addEventListener('click', function(e) {
+            const anchor = e.target.closest('a');
+            if (!anchor) return;
+            
+            const href = anchor.getAttribute('href');
+            if (href && href.startsWith('#') && href !== '#') {
+                e.preventDefault();
+                
+                const targetElement = document.getElementById(href.substring(1));
+                if (targetElement) {
+                    const navElement = document.querySelector('nav');
+                    const navHeight = navElement ? navElement.offsetHeight : 80;
+                    
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+
+        // --- DRAWER NAVIGATION MENU CONTROLLER ---
+        function toggleMenuDrawer(open) {
+            const drawer = document.getElementById('menuDrawer');
+            const backdrop = document.getElementById('drawerBackdrop');
+            const panel = document.getElementById('drawerPanel');
+
+            if (open) {
+                playMysticSound('click');
+                drawer.classList.remove('pointer-events-none');
+                backdrop.classList.remove('opacity-0');
+                backdrop.classList.add('opacity-100');
+                panel.classList.remove('translate-x-full');
+                panel.classList.add('translate-x-0');
+                document.body.style.overflow = 'hidden';
+            } else {
+                drawer.classList.add('pointer-events-none');
+                backdrop.classList.remove('opacity-100');
+                backdrop.classList.add('opacity-0');
+                panel.classList.remove('translate-x-0');
+                panel.classList.add('translate-x-full');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // --- FULLSCREEN PREVIEW SYSTEM ---
+        function openFullscreenPreview() {
+            playMysticSound('click');
+            const screenCopy = document.getElementById('phoneScreen').cloneNode(true);
+            screenCopy.id = "fullscreenPhoneScreen";
+            
+            const container = document.getElementById('modalScreenContainer');
+            container.innerHTML = "";
+            container.appendChild(screenCopy);
+            
+            document.getElementById('fullscreenPreviewModal').classList.remove('hidden');
+            document.getElementById('fullscreenPreviewModal').classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFullscreenPreview() {
+            document.getElementById('fullscreenPreviewModal').classList.remove('flex');
+            document.getElementById('fullscreenPreviewModal').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // --- WALLPAPER LIVE CUSTOMIZER CONTROLLERS (WITH ADVANCED SVG GENERATION) ---
+        const wallpaperThemes = {
+            wealth: { label: "Wealth & Rich Balance", icon: "💰", textTheme: "เงินทองสมดุล มั่งคั่ง ค้าขายปัง" },
+            love: { label: "Sweet Love Charm", icon: "💖", textTheme: "เสน่ห์เมตตา ความรักเบ่งบาน ดึงดูดดวงใจ" },
+            career: { label: "Career & Crown", icon: "🎓", textTheme: "การงานมั่นคง ปัญญาเฉียบคม เกียรติยศเด่น" },
+            protection: { label: "Safe & Blessed Energy", icon: "🍀", textTheme: "แคล้วคลาดปลอดภัย สุขภาพกายใจเบิกบาน" }
+        };
+
+        const wallpaperColorStyles = {
+            lavender: { 
+                overlayClass: "bg-gradient-to-tr from-[#9086E5]/40 to-[#E9E7FC]/40", 
+                primaryFill: "#372E6F", 
+                secondaryFill: "#E9E7FC",
+                accentFill: "#FAF6F0",
+                numberTextColor: "text-white",
+                nameTextColor: "text-white/90",
+                themeLabelColor: "text-lyra-pink",
+                subLabelColor: "text-white/70"
+            },
+            rose: { 
+                overlayClass: "bg-gradient-to-tr from-[#F6CBE3]/40 to-[#FCEAEB]/40", 
+                primaryFill: "#8C3A41", 
+                secondaryFill: "#FAF6F0",
+                accentFill: "#DDB65C",
+                numberTextColor: "text-white",
+                nameTextColor: "text-white/90",
+                themeLabelColor: "text-lyra-gold",
+                subLabelColor: "text-[#FAF6F0]/80"
+            },
+            midnight: { 
+                overlayClass: "bg-gradient-to-tr from-[#1E1A3D]/50 to-[#372E6F]/50", 
+                primaryFill: "#DDB65C", 
+                secondaryFill: "#FAF6F0",
+                accentFill: "#F6CBE3",
+                numberTextColor: "text-[#FAF6F0]",
+                nameTextColor: "text-[#FAF6F0]",
+                themeLabelColor: "text-lyra-pink",
+                subLabelColor: "text-white/70"
+            },
+            solar: { 
+                overlayClass: "bg-gradient-to-tr from-[#DDB65C]/40 to-[#FAF5E6]/40", 
+                primaryFill: "#372E6F", 
+                secondaryFill: "#FAF5E6",
+                accentFill: "#8C3A41",
+                numberTextColor: "text-lyra-darkpurple",
+                nameTextColor: "text-lyra-darkpurple/90",
+                themeLabelColor: "text-amber-900",
+                subLabelColor: "text-lyra-darkpurple/70"
+            }
+        };
+
+        // Custom Live Procedural SVGs for Wallpapers
+        const layoutStyles = [
+            { 
+                id: 0, 
+                name: "แบบที่ 1: Celestial Orbit (วงแหวนดวงดาวพาสเทล)", 
+                desc: "วงโคจรดาวเคราะห์และสัญลักษณ์แห่งการเติบโต",
+                renderSvg: (colors) => `
+                    <svg viewBox="0 0 100 150" class="w-full h-full">
+                        <ellipse cx="50" cy="75" rx="35" ry="12" fill="none" stroke="${colors.primaryFill}" stroke-width="0.5" stroke-dasharray="1 1" transform="rotate(-15 50 75)" />
+                        <ellipse cx="50" cy="75" rx="28" ry="28" fill="none" stroke="${colors.secondaryFill}" stroke-width="0.3" />
+                        <circle cx="50" cy="75" r="22" fill="none" stroke="${colors.accentFill}" stroke-width="0.6" stroke-dasharray="3 1" />
+                    </svg>
+                `
+            },
+            { 
+                id: 1, 
+                name: "แบบที่ 2: Sacred Portal (ประตูมิติแห่งดวงใจ)", 
+                desc: "ซุ้มวิหารจักรวาลและดวงตาปกป้องดวงชะตา",
+                renderSvg: (colors) => `
+                    <svg viewBox="0 0 100 150" class="w-full h-full">
+                        <path d="M25 110 L25 55 A 25 25 0 0 1 75 55 L75 110 Z" fill="none" stroke="${colors.primaryFill}" stroke-width="0.8" />
+                        <path d="M20 115 L20 55 A 30 30 0 0 1 80 55 L80 115 Z" fill="none" stroke="${colors.secondaryFill}" stroke-width="0.4" stroke-dasharray="2 1" />
+                        <circle cx="50" cy="65" r="12" fill="none" stroke="${colors.accentFill}" stroke-width="0.6" />
+                    </svg>
+                `
+            },
+            { 
+                id: 2, 
+                name: "แบบที่ 3: Aura Starburst (ประกายดาวนำทางชีวิต)", 
+                desc: "แสงเรืองประกายดาวมงคลคอยดึงดูดพลังความสำเร็จ",
+                renderSvg: (colors) => `
+                    <svg viewBox="0 0 100 150" class="w-full h-full">
+                        <g transform="translate(50, 75)">
+                            <line x1="0" y1="-45" x2="0" y2="45" stroke="${colors.secondaryFill}" stroke-width="0.3" stroke-dasharray="2 2" />
+                            <line x1="-45" y1="0" x2="45" y2="0" stroke="${colors.secondaryFill}" stroke-width="0.3" stroke-dasharray="2 2" />
+                            <line x1="-32" y1="-32" x2="32" y2="32" stroke="${colors.primaryFill}" stroke-width="0.2" />
+                            <line x1="-32" y1="32" x2="32" y2="-32" stroke="${colors.primaryFill}" stroke-width="0.2" />
+                        </g>
+                    </svg>
+                `
+            },
+            { 
+                id: 3, 
+                name: "แบบที่ 4: Constellation (โครงข่ายเส้นทางชะตาฟ้า)", 
+                desc: "กลุ่มหมู่ดาวระยิบระยับชักนำโชคลาภวาสนาดี",
+                renderSvg: (colors) => `
+                    <svg viewBox="0 0 100 150" class="w-full h-full">
+                        <circle cx="50" cy="75" r="38" fill="none" stroke="${colors.primaryFill}" stroke-width="0.4" />
+                        <circle cx="50" cy="75" r="35" fill="none" stroke="${colors.secondaryFill}" stroke-width="0.2" />
+                    </svg>
+                `
+            }
+        ];
+
+        // Layout watercolor file links matching background images from user assets
+        const layoutImages = [
+            "LINE_ALBUM_5669_260605_4.jpg", // Sweet Love
+            "LINE_ALBUM_5669_260605_3.jpg", // Wealthy Dome
+            "LINE_ALBUM_5669_260605_2.jpg", // Career River
+            "LINE_ALBUM_5669_260605_1.jpg"  // Serene Cypress
+        ];
+
+        function setWallColor(colorKey) {
+            playMysticSound('click');
+            state.currentWallColorTheme = colorKey;
+            
+            const buttons = document.querySelectorAll('#wallColorContainer button');
+            const keys = ['lavender', 'rose', 'midnight', 'solar'];
+            buttons.forEach((btn, idx) => {
+                if (keys[idx] === colorKey) {
+                    btn.className = "color-theme-btn border-2 border-lyra-purple p-2.5 rounded-xl text-center text-[11px] font-bold shadow-sm transition-all";
+                } else {
+                    btn.className = "color-theme-btn border border-lyra-purple/10 p-2.5 rounded-xl text-center text-[11px] font-medium text-lyra-darkpurple hover:border-lyra-purple/30 transition-all";
+                }
+            });
+
+            // Color-specific button styled background logic representation
+            const colors = {
+                lavender: "bg-gradient-to-br from-[#E9E7FC] to-[#D5CFF7] text-lyra-darkpurple",
+                rose: "bg-gradient-to-br from-[#F6CBE3] to-[#FCEAEB] text-[#8C3A41]",
+                midnight: "bg-gradient-to-br from-[#1E1A3D] to-[#392E5B] text-lyra-pink",
+                solar: "bg-gradient-to-br from-[#FAF5E6] to-[#EDDFB8] text-amber-800"
+            };
+
+            buttons.forEach((btn, idx) => {
+                const k = keys[idx];
+                btn.className += " " + colors[k];
+            });
+
+            updateWallpaperPreview();
+        }
+
+        function setWallpaperLayout(index) {
+            playMysticSound('click');
+            state.selectedLayoutIndex = index;
+            
+            const buttons = document.querySelectorAll('#wallLayoutContainer button');
+            buttons.forEach((btn, idx) => {
+                if (idx === index) {
+                    btn.className = "layout-select-btn border-2 border-lyra-purple p-3 rounded-xl text-left bg-lyra-cream/30 hover:bg-lyra-lightpurple/20 transition duration-300 w-full shadow-sm";
+                } else {
+                    btn.className = "layout-select-btn border border-lyra-purple/15 p-3 rounded-xl text-left bg-lyra-cream/30 hover:bg-lyra-lightpurple/20 transition duration-300 w-full";
+                }
+            });
+            updateWallpaperPreview();
+        }
+
+        function nextWallpaperLayout() {
+            state.selectedLayoutIndex = (state.selectedLayoutIndex + 1) % layoutStyles.length;
+            setWallpaperLayout(state.selectedLayoutIndex);
+        }
+
+        function prevWallpaperLayout() {
+            state.selectedLayoutIndex = (state.selectedLayoutIndex - 1 + layoutStyles.length) % layoutStyles.length;
+            setWallpaperLayout(state.selectedLayoutIndex);
+        }
+
+        // Swipe Gestures for Mobile Mockup Live Screen View
+        const phoneMockupFrame = document.getElementById('phoneMockupFrame');
+        let phoneStartX = 0;
+        let phoneEndX = 0;
+        phoneMockupFrame.addEventListener('touchstart', (e) => {
+            phoneStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        phoneMockupFrame.addEventListener('touchend', (e) => {
+            phoneEndX = e.changedTouches[0].screenX;
+            handlePhoneSwipe();
+        }, { passive: true });
+
+        function handlePhoneSwipe() {
+            const threshold = 40;
+            if (phoneStartX - phoneEndX > threshold) {
+                nextWallpaperLayout();
+            } else if (phoneEndX - phoneStartX > threshold) {
+                prevWallpaperLayout();
+            }
+        }
+
+        function updateWallpaperPreview() {
+            const nameInput = (document.getElementById('inputWallName').value.trim() || "LYRALUNA").toUpperCase();
+            const themeKey = document.getElementById('selectWallTheme').value;
+            const themeData = wallpaperThemes[themeKey];
+            const colorData = wallpaperColorStyles[state.currentWallColorTheme];
+            const activeLayout = layoutStyles[state.selectedLayoutIndex];
+
+            // Render SVG Procedurally
+            const svgContainer = document.getElementById('phoneScreenSvgBg');
+            svgContainer.innerHTML = activeLayout.renderSvg(colorData);
+
+            // Re-render wallpaper background dynamically using actual designer watercolor files
+            const phoneScreen = document.getElementById('phoneScreen');
+            phoneScreen.style.backgroundImage = `url('${layoutImages[state.selectedLayoutIndex]}')`;
+
+            const overlay = document.getElementById('phoneScreenColorOverlay');
+            overlay.className = `absolute inset-0 z-0 opacity-40 mix-blend-color transition-all duration-500 ${colorData.overlayClass}`;
+
+            // Compute lucky numbers using name input hash code
+            let hashVal = 0;
+            for(let i=0; i<nameInput.length; i++) {
+                hashVal += nameInput.charCodeAt(i);
+            }
+            let pair1 = (hashVal * 7) % 89 + 10;
+            let pair2 = (hashVal * 11) % 89 + 10;
+            let pair3 = (hashVal * 3) % 89 + 10;
+            const finalNumbers = `${pair1} ${pair2} ${pair3}`;
+
+            // Overlying text layout directly into watercolor template coordinate placeholders beautifully without gray card box
+            const container = document.getElementById('dynamicLayoutContainer');
+            container.innerHTML = `
+                <!-- Lucky Numbers Overlay replacing default '8 8 8 8' center text in raw templates -->
+                <div class="absolute top-[48%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full select-none pointer-events-none z-10">
+                    <div class="text-3xl md:text-4xl font-serif font-extrabold tracking-[0.2em] drop-shadow-[0_2px_4px_rgba(0,0,0,0.45)] ${colorData.numberTextColor}">
+                        ${finalNumbers}
+                    </div>
+                    <div class="text-[9px] uppercase tracking-[0.25em] font-bold opacity-90 mt-1.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)] ${colorData.themeLabelColor}">
+                        ${themeData.label}
+                    </div>
+                </div>
+
+                <!-- Customized Name Overlay replacing default 'LYRALUNA' bottom footer text in raw templates -->
+                <div class="absolute bottom-[8%] left-1/2 transform -translate-x-1/2 text-center w-full select-none pointer-events-none z-10">
+                    <div class="text-sm font-mono font-black tracking-[0.3em] uppercase drop-shadow-[0_2px_3px_rgba(0,0,0,0.45)] ${colorData.nameTextColor}">
+                        ${nameInput}
+                    </div>
+                    <div class="text-[8px] uppercase tracking-[0.15em] opacity-80 mt-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)] ${colorData.subLabelColor}">
+                        Soul Companion
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('layoutBadgeIndicator').innerText = `แบบที่ ${activeLayout.id + 1} ✦`;
+        }
+
+        // --- SHOPPING CART & ORDER FORM BUILDER ---
+        function addToCart(serviceName, price) {
+            const exists = state.cart.find(item => item.name === serviceName);
+            if (exists) {
+                showFloatingNotification("คุณได้เลือกแพ็คเกจนี้ไว้ในตะกร้าออเดอร์แล้วค่ะ! 💖");
+                return;
+            }
+            state.cart.push({ name: serviceName, price: price });
+            updateCartUI();
+            showFloatingNotification(`เพิ่ม "${serviceName}" สู่สรุปใบจองเรียบร้อยค่ะ ✨`);
+        }
+
+        function addCustomWallpaperToCart() {
+            const nameValue = document.getElementById('inputWallName').value.trim() || "LYRALUNA";
+            const layoutName = layoutStyles[state.selectedLayoutIndex].name;
+            const fullTitle = `ออกแบบวอลเปเปอร์เฉพาะดวงชะตา (ชื่อคัสตอม: ${nameValue.toUpperCase()}, ดีไซน์: ${layoutName})`;
+            
+            state.cart = state.cart.filter(item => !item.name.includes('วอลเปเปอร์'));
+            state.cart.push({ name: fullTitle, price: 89 });
+            updateCartUI();
+            
+            document.getElementById('wallName').value = nameValue.toUpperCase();
+            document.getElementById('wallStyle').value = `${layoutName} (โทนสี: ${state.currentWallColorTheme})`;
+            
+            const orderSection = document.getElementById('order');
+            orderSection.scrollIntoView({ behavior: 'smooth' });
+
+            showFloatingNotification(`ส่งไฟล์วอลเปเปอร์ดีไซน์ "${nameValue.toUpperCase()}" (${layoutName}) เข้าระบบคิวจองแล้วค่ะ! 🎨`);
+        }
+
+        function removeFromCart(name) {
+            state.cart = state.cart.filter(item => item.name !== name);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartList = document.getElementById('cartList');
+            const wpDetails = document.getElementById('wallpaperDetailsContainer');
+            const customerDetailsContainer = document.getElementById('customerInfoContainer');
+            const totalDisplay = document.getElementById('totalPriceDisplay');
+            const floatCart = document.getElementById('floatingCartBtn');
+            const floatCartCount = document.getElementById('floatingCartCount');
+
+            // Bug fix: Cleanly rebuild empty state block using innerHTML to prevent type appendChild null errors
+            if (state.cart.length === 0) {
+                cartList.innerHTML = `
+                    <div id="cartEmptyMessage" class="text-center py-6 text-xs text-lyra-charcoal/50">
+                        ยังไม่มีการเลือกบริการพยากรณ์ใดๆ กรุณาคลิก "เลือกแพ็คเกจ" หรือกดปุ่ม "สั่งผลิตลายวอลเปเปอร์" ด้านบนเพื่อจัดทำออเดอร์
+                    </div>
+                `;
+                wpDetails.classList.add('hidden');
+                customerDetailsContainer.classList.remove('hidden');
+                totalDisplay.innerText = "0";
+                floatCart.classList.add('hidden', 'translate-y-10', 'opacity-0');
+                return;
+            }
+
+            cartList.innerHTML = "";
+            let total = 0;
+            let showWallpaperForm = false;
+            let showCustomerForm = false;
+
+            state.cart.forEach(item => {
+                total += item.price;
+                if (item.name.includes('วอลเปเปอร์')) {
+                    showWallpaperForm = true;
+                    showCustomerForm = true; 
+                }
+                if (item.name.includes('คำถาม') || item.name.includes('Yes or No') || item.name.includes('แพ็คเกจ')) {
+                    showCustomerForm = true; 
+                }
+
+                let itemIcon = "🔮";
+                if (item.name.includes('วอลเปเปอร์')) {
+                    itemIcon = "🎨";
+                }
+
+                const itemRow = document.createElement('div');
+                itemRow.className = "flex items-center justify-between bg-white p-3 md:p-4 rounded-xl border border-lyra-purple/10 shadow-sm gap-2 transition hover:border-lyra-purple/30";
+                itemRow.innerHTML = `
+                    <div class="flex items-center gap-2.5 min-w-0">
+                        <span class="text-lg shrink-0">${itemIcon}</span>
+                        <div class="min-w-0">
+                            <p class="text-xs font-bold text-lyra-darkpurple truncate">${item.name}</p>
+                            <p class="text-[10px] text-lyra-charcoal/50">ราคา ${item.price.toLocaleString()} บาท</p>
+                        </div>
+                    </div>
+                    <button onclick="removeFromCart('${item.name}')" class="p-2 text-rose-500 hover:bg-rose-50 rounded-lg transition shrink-0 active:scale-95" aria-label="ลบรายการ">
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                    </button>
+                `;
+                cartList.appendChild(itemRow);
+            });
+
+            if (showWallpaperForm) {
+                wpDetails.classList.remove('hidden');
+            } else {
+                wpDetails.classList.add('hidden');
+            }
+
+            if (showCustomerForm) {
+                customerDetailsContainer.classList.remove('hidden');
+            } else {
+                customerDetailsContainer.classList.add('hidden');
+            }
+
+            totalDisplay.innerText = total.toLocaleString();
+            floatCartCount.innerText = state.cart.length;
+            floatCart.classList.remove('hidden');
+            setTimeout(() => {
+                floatCart.classList.remove('translate-y-10', 'opacity-0');
+            }, 50);
+
+            lucide.createIcons();
+        }
+
+        // Floating Toast Notification system replacing native dialog alerts
+        function showFloatingNotification(text) {
+            const prev = document.getElementById('lyraNotification');
+            if (prev) prev.remove();
+
+            const toast = document.createElement('div');
+            toast.id = "lyraNotification";
+            toast.className = "fixed bottom-24 right-6 z-50 bg-lyra-darkpurple text-white px-5 py-3 rounded-2xl shadow-xl border border-lyra-purple/40 text-xs flex items-center gap-2 transition-all transform translate-y-10 opacity-0";
+            toast.innerHTML = `
+                <span class="text-sm">🔮🌙</span>
+                <span class="font-semibold">${text}</span>
+            `;
+
+            document.body.appendChild(toast);
+            lucide.createIcons();
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            }, 50);
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => toast.remove(), 400);
+            }, 3500);
+        }
+
+        // Generate Order summary output & copy to clipboard
+        function generateOrderText() {
+            const customerName = document.getElementById('customerName').value.trim();
+            const customerPhone = document.getElementById('customerPhone').value.trim();
+            const customerQuestions = document.getElementById('customerQuestions').value.trim();
+
+            const hasReadings = state.cart.some(item => item.name.includes('คำถาม') || item.name.includes('Yes or No') || item.name.includes('วอลเปเปอร์') || item.name.includes('แพ็คเกจ'));
+
+            let text = `🔮 [ สรุปใบรายการสั่งจองดวงชะตา Lyraluna ] 🔮\n`;
+            text += `===================================\n`;
+            
+            if (hasReadings) {
+                text += `👤 ข้อมูลผู้สั่ง / ลูกดวง:\n`;
+                text += `- ชื่อเล่น: ${customerName ? customerName : 'แจ้งทางแชท LINE'}\n`;
+                text += `- ช่องทางการติดต่อเพิ่มเติม (ไม่บังคับ): ${customerPhone ? customerPhone : 'ไม่ระบุ'}\n`;
+                text += `===================================\n`;
+            }
+            
+            text += `📋 บริการที่ต้องการจองคิว:\n`;
+
+            let totalPrice = 0;
+            let hasWallpaper = false;
+
+            state.cart.forEach((item, idx) => {
+                text += `${idx + 1}. ${item.name} (${item.price} บาท)\n`;
+                totalPrice += item.price;
+                if (item.name.includes('วอลเปเปอร์')) {
+                    hasWallpaper = true;
+                }
+            });
+
+            if (hasWallpaper) {
+                const wallRealName = document.getElementById('wallName').value.trim() || "ไม่ระบุ (กรุณาแจ้งแอดมินในแชท)";
+                const wallBirth = document.getElementById('wallBirthdate').value.trim() || "ไม่ระบุ (กรุณาแจ้งแอดมินในแชท)";
+                const wallTheme = document.getElementById('wallFocus').value;
+                const wallTone = document.getElementById('wallStyle').value.trim() || "ตามสไตล์ดีไซเนอร์พาสเทล";
+
+                text += `===================================\n`;
+                text += `🎨 รายละเอียดสั่งออกแบบวอลเปเปอร์ดวงชะตา:\n`;
+                text += `- ชื่อภาษาอังกฤษ: ${wallRealName}\n`;
+                text += `- วันเดือนปีเกิด & เวลาเกิด: ${wallBirth}\n`;
+                text += `- ปรารถนาเสริมหลัก: ${wallTheme}\n`;
+                text += `- ดีไซน์และสีสันที่ชอบ: ${wallTone}\n`;
+            }
+
+            if (hasReadings && customerQuestions) {
+                text += `===================================\n`;
+                text += `📝 หมายเหตุเพิ่มเติม:\n`;
+                text += `${customerQuestions}\n`;
+            }
+
+            text += `===================================\n`;
+            text += `💰 ยอดชำระเงินรวมทั้งหมด: ${totalPrice.toLocaleString()} บาท\n`;
+            text += `===================================\n`;
+            text += `✨ ขอบพระคุณที่อนุญาตให้ดวงดาวแห่ง Lyraluna ดูแลนะคะ ✨`;
+
+            const outputBox = document.getElementById('outputOrderText');
+            outputBox.value = text;
+
+            document.getElementById('outputContainer').classList.remove('hidden');
+
+            outputBox.select();
+            document.execCommand('copy');
+
+            const copyAlert = document.getElementById('copyAlert');
+            copyAlert.classList.remove('hidden');
+            copyAlert.scrollIntoView({ behavior: 'smooth' });
+
+            showFloatingNotification("คัดลอกรายละเอียดใบสั่งจองไปยังคลิปบอร์ดแล้วค่ะ ทักแชท LINE ได้เลย 💕");
+        }
+
+        window.onload = function() {
+            // First time loading screen update
+            updateWallpaperPreview();
+        };
+    </script>
+</body>
+</html>
